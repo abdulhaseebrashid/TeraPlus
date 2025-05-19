@@ -1,0 +1,194 @@
+:root {
+  --primary-color: #0066FF;
+  --text-color: #1A1A1A;
+  --background-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+.hero-container {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--background-gradient);
+  padding: 2rem;
+  direction: rtl;
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+}
+
+.calendar-section {
+  flex: 1;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  max-width: 500px;
+}
+
+.calendar-interface {
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.date {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.calendar-controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.icon-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.calendar-icon,
+.list-icon,
+.settings-icon {
+  width: 24px;
+  height: 24px;
+  background: #f0f2f5;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.calendar-body {
+  flex: 1;
+  background: #fafbfc;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.calendar-events {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.text-content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-title {
+  font-family: 'Open Sans Hebrew', 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 70px;
+  line-height: 80px;
+  letter-spacing: 0%;
+  text-align: right;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.cta-button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background: #0052cc;
+}
+
+.stats {
+  margin-top: 2rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero-content {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .text-content {
+    max-width: 100%;
+  }
+
+  .calendar-section {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-title {
+    font-size: 50px;
+    line-height: 60px;
+  }
+
+  .hero-subtitle {
+    font-size: 1.8rem;
+  }
+}
+
+/* Custom scrollbar for calendar events */
+.calendar-events::-webkit-scrollbar {
+  width: 6px;
+}
+
+.calendar-events::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.calendar-events::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.calendar-events::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} 
