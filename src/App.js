@@ -19,8 +19,6 @@ import ForgotPassword from './components/pages/Auth/Login/forgot_password';
 import CodeVerification from './components/pages/Auth/Login/code_verification';
 import NewPassword from './components/pages/Auth/Login/new_password';
 import BusinessProfileHome from './components/pages/Search_and_make_an_appointment/Business_Profile_Home';
-import Appointment from "./components/pages/Search_and_make_an_appointment/appointment_Select _date";
-import test from "./components/pages/Search_and_make_an_appointment/test";
 import './App.css';
 
 function HomePage() {
@@ -52,8 +50,6 @@ function App() {
         <Route path="/code-verification" element={<CodeVerification />} />
         <Route path="/new-password" element={<NewPassword />} />
         <Route path="/business-profile-home" element={<BusinessProfileHome />} />
-        <Route path="/appointment-select-date" element={<Appointment />} />
-        <Route path="/test" element={<test />} />
       </Routes>
    
   );

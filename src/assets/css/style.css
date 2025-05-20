@@ -4039,27 +4039,203 @@ input[type=number] {
     color: #032B48;
    }
 
-   .business-profile-home-second-container .Choosing-therapist .Choosing-therapist-content .Choosing-therapist-content-text {
+   .Choosing-therapist .Choosing-therapist-list .Choosing-therapist-item .Choosing-therapist-content-text {
     padding: 10px;
     border: 1px solid #BCBCBC;
     border-radius: 20px;
    }
 
-   .business-profile-home-second-container .Choosing-therapist .Choosing-therapist-content .Choosing-therapist-content-text h6 {
+   /* Already existing base styles — keep these */
+.Choosing-therapist .Choosing-therapist-list .Choosing-therapist-item .Choosing-therapist-content-text h6 {
     font-size: 16px;
     font-weight: 400;
     color: #BCBCBC;
     margin: 0px !important;
-   }
-
-   .business-profile-home-second-container .Choosing-therapist .Choosing-therapist-content .Choosing-therapist-content-text h6:hover {
+  }
+  
+  .Choosing-therapist .Choosing-therapist-list .Choosing-therapist-item .Choosing-therapist-content-text {
+    padding: 10px;
+    border: 1px solid #BCBCBC;
+    border-radius: 20px;
+    transition: border 0.3s ease;
+  }
+  
+  .Choosing-therapist .Choosing-therapist-list .Choosing-therapist-item .Choosing-therapist-content-text:hover h6 {
     color: #0066FF;
     cursor: pointer;
-   }
-
-   .business-profile-home-second-container .Choosing-therapist .Choosing-therapist-content .Choosing-therapist-content-text:hover {
+  }
+  
+  .Choosing-therapist .Choosing-therapist-list .Choosing-therapist-item .Choosing-therapist-content-text:hover {
     border: 1px solid #0066FF;
-   }
+  }
+
+  .Choosing-therapist .Choosing-therapist-list .Choosing-therapist-item .Choosing-therapist-content-text:hover {
+    border: 1px solid #0066FF;
+  }
+  
+  /* 👇 Highlight text and border when item is selected */
+  .Choosing-therapist-item.selected-therapist .Choosing-therapist-content-text {
+    border: 1px solid #0066FF !important;
+  }
+  
+  .Choosing-therapist-item.selected-therapist .Choosing-therapist-content-text h6 {
+    color: #0066FF !important;
+  }
+  
+  /* 👇 SVG stroke */
+  .user-icon-path {
+    stroke: #BCBCBC;
+    transition: stroke 0.3s ease;
+  }
+  
+  .Choosing-therapist-item:hover .user-icon-path,
+  .Choosing-therapist-item.selected-therapist .user-icon-path {
+    stroke: #0066FF;
+  }
+
+  .therapist-time-container{
+    padding: 30px;
+  }
+
+  .therapist-time-container .therapist-time-title{
+    font-size: 18px;
+    font-weight: 700;
+    color: #032B48;
+  }
+
+  .therapist-time-container .time-button {
+    border: 1px solid #BCBCBC;
+    border-radius: 20px;
+    padding: 6px 10px;
+    font-weight: 400;
+    font-size: 18px;
+    color: #0d1b2a;
+    background-color: #ffffff00;
+    transition: all 0.3s ease;
+  }
+  
+  .therapist-time-container .time-button:hover {
+    border-color: #0066ff;
+    color: #0066ff;
+  }
+  
+  .therapist-time-container .time-button.active {
+    border-color: #0066ff;
+    color: #0066ff;
+  }
+
+
+  .calendar-container {
+    padding: 30px;
+    max-width: 100%;
+    margin: auto;
+    border-radius: 20px;
+    background-color: #ffffff;
+  }
+  
+  .react-calendar {
+    border: none !important;
+    direction: rtl;
+  }
+  
+  .react-calendar__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: #011b3b;
+    margin-bottom: 1rem;
+  }
+  
+  .react-calendar__navigation button {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #011b3b;
+  }
+  
+  .react-calendar__month-view__weekdays {
+    display: flex;
+    justify-content: space-around;
+    color: #2f3e46;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .react-calendar__tile {
+    padding: 0.75rem 0;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+  }
+  
+  .react-calendar__tile--active {
+    background-color: #f8f8f800 !important;
+    color: #0066FF !important;
+  }
+
+  .react-calendar__tile:hover {
+    background-color: #0066ff00 !important;
+    padding: 0px !important;
+    color: #0066FF !important;
+    
+  }
+  
+  .react-calendar__tile:disabled {
+    color: #cccccc00;
+  }
+
+  .react-calendar__tile--now {
+    background-color: #0066ff00 !important;
+    padding: 0px !important;
+    color: #0066FF !important;
+  }
+
+  .react-calendar .react-calendar__month-view__weekdays__weekday  abbr {
+    text-decoration: none !important;
+    cursor: pointer !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    color: #333333 !important;
+
+  }
+
+  .react-calendar__month-view__days__day--weekend {
+    color: #BCBCBC !important;
+  }
+
+  .react-calendar__navigation__prev2-button, .react-calendar__navigation__next2-button {
+    display: none !important;
+  }
+
+  .react-calendar .react-calendar__navigation__label, 
+  .react-calendar .react-calendar__navigation__next-button,
+  .react-calendar .react-calendar__navigation__prev-button {
+    color: #032B48 !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+  }
+  
+
+  .react-calendar .react-calendar__navigation__label:hover {
+    background-color: #0066ff00 !important;
+    color: #0066FF !important;
+  }
+
+  .react-calendar .react-calendar__navigation__next-button:hover,
+    .react-calendar .react-calendar__navigation__prev-button:hover {
+    background-color: #0066ff00 !important;
+    color: #0066FF !important;
+  }
+  
+  .react-calendar {
+    width: 100% !important;
+  }
+  
+  
    
 /* ====================Ahmer css end========================== */
 
