@@ -19,6 +19,7 @@ import CodeVerification from './components/pages/Auth/Login/code_verification';
 import NewPassword from './components/pages/Auth/Login/new_password';
 import Signup from './components/pages/Auth/Signup';
 import Appointment from './components/pages/Appointment/Appoint';
+import AppointmentSearch from './components/pages/Appointment/AppointSearch';
 
 import './App.css';
 
@@ -51,6 +52,7 @@ function App() {
         <Route path="/code-verification" element={<CodeVerification />} />
         <Route path="/new-password" element={<NewPassword />} />
         <Route path="/appointment" element={<Appointment />} />
+        <Route path="/appoint-search" element={<AppointmentSearch />} />
       </Routes>
    
   );

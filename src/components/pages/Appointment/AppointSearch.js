@@ -30,7 +30,7 @@ const HeartSVG = ({ isFavorite }) => (
   </svg>
 );
 
-const Appoint = () => {
+const AppointSearch = () => {
   const carouselRef = useRef();
   const [showAllArr, setShowAllArr] = useState([false, false]);
   const [expandedSections, setExpandedSections] = useState([false, false, false, false, false, false]);
@@ -79,8 +79,7 @@ const Appoint = () => {
   // Multiple sections for grid rows
   const sections = [
     {
-      title: "בסביבה שלך",
-      button1:"הצג הכל",
+     
       cards: [
         { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
         { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
@@ -88,76 +87,28 @@ const Appoint = () => {
         { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
         { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
         { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-      ]
-    },
-    {
-      title: "חדשים אצלנו",
-      button1:"הצג הכל",
-      cards: [
         { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
         { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
         { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
         { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
         { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
         { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-      ]
-    },
-    {
-      type: "category",
-      title: "בא לי...",
-      button1:"בא לי... ",
+        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
+        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
+        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
+        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
+        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
+        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
+        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
+        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
+        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
+        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
+        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
+        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
+        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
 
-      cards: [
-        { img: Crad1, title: "דיקור סיני", subtitle: "30 דקות" },
-        { img: Crad1, title: "דיקור סיני", subtitle: "30 דקות" },
-        { img: Crad1, title: "דיקור סיני", subtitle: "30 דקות" },
-        { img: Crad1, title: "דיקור סיני", subtitle: "30 דקות" },
-        { img: Crad1, title: "רפלקסולוגיה", subtitle: "30 דקות" },
-        { img: Crad1, title: "עיסוי שוודי", subtitle: "250 דקות" },
-        { img: Crad1, title: "רפלקסולוגיה", subtitle: "30 דקות" },
-        { img: Crad1, title: "עיסוי שוודי", subtitle: "250 דקות" },
       ]
-    },
-    {
-      title: "בסביבה שלך",
-      button1:"הצג הכל",
-
-      cards: [
-        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-      ]
-    },
-    {
-      title: "ספא לקבוצות",
-      button1:"הצג הכל",
-
-      cards: [
-        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-      ]
-    },
-    {
-      title: "ספא ליחיד",
-      button1:"הצג הכל",
-
-      cards: [
-        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-        { img: Crad1, title: "ספא 3030", address: "רחוב רוטשילד 6, תל אביב-יפו", rating: "4.5" },
-      ]
-    }
-   
+    }, 
   ];
 
   return (
@@ -190,9 +141,7 @@ const Appoint = () => {
       </Navbar>
 
       <Container className="appointment-container" dir="rtl">
-        <div className="text-center mb-4">
-          <h2 className="main-title">מצאו  את הספא המתאים ביותר עבורכם</h2>
-        </div>
+       
 
         {/* Search Section */}
         <div className="search-section">
@@ -213,65 +162,14 @@ const Appoint = () => {
           </div>
         </div>
 
-        {/* Carousel + Arrows */}
-        <div className="carousel-wrapper">
-          <Carousel
-            responsive={responsive}
-            arrows={false}
-            showDots={false}
-            infinite={cards.length > 2}
-            containerClass="recommendations-carousel"
-            itemClass="carousel-card-wrapper"
-            ref={carouselRef}
-            autoPlay={true}
-            autoPlaySpeed={3000}
-            pauseOnHover={true}
-          >
-            {cards.map((card, idx) => (
-              <div className="carousel-card" key={idx}>
-                <img src={card.img} alt={card.title} className="card-image" />
-                <div className="card-content card-content-overlay">
-                  <h3>{card.title}</h3>
-                </div>
-                <div className="card-bottom-bar blue">{card.bar}</div>
-              </div>
-            ))}
-          </Carousel>
-
-          {/* External Arrows */}
-          <div className="carousel-arrows-wrapper d-flex justify-content-between mt-3">
-            <button
-              onClick={() => carouselRef.current.previous()}
-              className="custom-carousel-arrow left"
-              aria-label="Previous"
-            >
-              <i className="bi bi-arrow-left"></i>
-            </button>
-            <button
-              onClick={() => carouselRef.current.next()}
-              className="custom-carousel-arrow right"
-              aria-label="Next"
-            >
-              <i className="bi bi-arrow-right"></i>
-            </button>
-          </div>
-        </div>
+        
 
         {/* Multiple grid rows with show all */}
         {sections.map((section, idx) => {
-          const isExpanded = expandedSections[idx] || false;
-          const initialCount = section.type === "category" ? 6 : 4;
-          const visibleCards = isExpanded ? section.cards : section.cards.slice(0, initialCount);
+          const visibleCards = section.cards;
           return (
             <div className="around-you-section" key={idx}>
-              <div className="around-you-header">
-                <button className="show-all-btn" onClick={() => {
-                  setExpandedSections(arr => arr.map((val, i) => i === idx ? !val : val));
-                }}>
-                   {section.button1}
-                </button>
-                <h2 className="around-you-title">{section.title}</h2>
-              </div>
+              
               <div className={`around-you-grid ${section.type === "category" ? "category-grid" : ""}`}>
                 {visibleCards.map((card, cidx) => (
                   section.type === "category" ? (
@@ -306,42 +204,9 @@ const Appoint = () => {
             </div>
           );
         })}
-        <section className="free-subscription-section py-0 px-0 my-4">
-            <div className="container p-0">
-                <div className="row justify-content-center g-0 subscription-container">
-                    {/* Right Side Content */}
-                    <div className="col-12 col-md-7 d-flex flex-column align-items-end align-items-md-center text-white right-side right-side1">
-                        <h2 className="subscription-heading">
-                            בעלי עסקים? הדרך החכמה<br />להזמין, לנהל ולהצליח בעולם הטיפולים.
-                        </h2>
-                        <p className="subscription-description">
-                            בעזרת הערכת שלנו תוכל לנהל את חוויית הספא שלך בצורה מושלמת וקלה, חווית תיאום התור מעולם לא הייתה קלה יותר.
-                        </p>
-                        <div className="d-flex flex-wrap gap-2">
-                            <button className="btn btn-light fw-bold subscription-start-btn" type="button">
-                            בואו נתחיל 
-                            </button>
-                            <button className="btn btn-outline-light fw-bold subscription-start-btn2" type="button">
-                            דברו איתנו
-                            </button>
-                        </div>
-                    </div>
-                    {/* Left Side Images */}
-                    <div className="col-12 col-md-5 d-flex justify-content-center align-items-center left-img">
-                        <img
-                            src={leftImage}
-                            alt="TheraPlus App Preview"
-                            className="img-fluid rounded-4 bg-white subscription-image"
-                        />
-                       
-                        <div className="image-gradient-bottom"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
       </Container>
     </div>
   );
 };
 
-export default Appoint;
+export default AppointSearch;
