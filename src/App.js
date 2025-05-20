@@ -14,13 +14,12 @@ import Advantages from './components/pages/Home/Advantages';
 import Hero from './components/pages/Home/Hero';
 
 import Login from './components/pages/Auth/Login/login';
-import Signup from './components/pages/Auth/Signup';
 import ForgotPassword from './components/pages/Auth/Login/forgot_password';
 import CodeVerification from './components/pages/Auth/Login/code_verification';
 import NewPassword from './components/pages/Auth/Login/new_password';
-import BusinessProfileHome from './components/pages/Search_and_make_an_appointment/Business_Profile_Home';
-import Appointment from "./components/pages/Search_and_make_an_appointment/appointment_Select _date";
-import test from "./components/pages/Search_and_make_an_appointment/test";
+import Signup from './components/pages/Auth/Signup';
+import Appointment from './components/pages/Appointment/Appoint';
+
 import './App.css';
 
 function HomePage() {
@@ -51,9 +50,7 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/code-verification" element={<CodeVerification />} />
         <Route path="/new-password" element={<NewPassword />} />
-        <Route path="/business-profile-home" element={<BusinessProfileHome />} />
-        <Route path="/appointment-select-date" element={<Appointment />} />
-        <Route path="/test" element={<test />} />
+        <Route path="/appointment" element={<Appointment />} />
       </Routes>
    
   );
