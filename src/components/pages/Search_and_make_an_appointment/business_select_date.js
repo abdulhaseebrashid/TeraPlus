@@ -5,15 +5,21 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-const BusinessSelectDate = () => {
+const BusinessSelectDate = ({ onComplete }) => {
   const [selectedTherapist, setSelectedTherapist] = useState(null);
+  const [selectedTime, setSelectedTime] = useState(null);
+  const [date, setDate] = useState(new Date());
 
   const therapists = ["אהרון", "אהרון", "אהרון"];
-
-  const [selectedTime, setSelectedTime] = useState(null);
   const times = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00'];
 
-  const [date, setDate] = useState(new Date());
+  // Check if all selections are made
+  React.useEffect(() => {
+    if (selectedTherapist !== null && selectedTime && date) {
+      onComplete(); // Call parent function to move to next section
+    }
+  }, [selectedTherapist, selectedTime, date]);
+
 
     return (
       <section className="Choosing-therapist-section d-flex flex-column gap-4">

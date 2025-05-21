@@ -69,11 +69,7 @@ const BusinessTabSection = ({ onPriceClick }) => {
   const tabs = Object.entries(tabNames).map(([key, label]) => ({ key, label }));
 
   return (
-    <div className="business-profile-home-second-container-bottom pt-3 md-pt-3 lg-pt-5 sm-pt-3">
-      {/* Section Title */}
-      <div className="d-flex justify-content-start align-items-start mb-3">
-        <h5 className="fw-bold">טיפולים וחבילות</h5>
-      </div>
+    <div className="business-profile-home-second-container-bottom">      
 
       {/* Tabs Navigation */}
       <div className="nav nav-pills justify-content-end flex-row-reverse gap-2 mb-3 rtl" role="tablist">

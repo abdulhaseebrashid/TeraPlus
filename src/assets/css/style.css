@@ -3846,6 +3846,31 @@ input[type=number] {
   color: #032B48;
 }
 
+  .packages-heading .packages-heading-title{
+    font-size: 22px;
+    font-weight: 700;
+    color: #032B48;
+  }
+
+  .packages-heading .packages-heading-back{
+    font-size: 18px;
+    font-weight: 400;
+    color: #032B48;
+  }
+
+  .packages-heading .packages-heading-back:hover{
+    color: #0066FF;
+  }
+
+  .packages-heading .packages-link-back{
+    text-decoration: none !important;
+    border: none !important;
+    font-size: 16px;
+    font-weight: 400;
+    color: #032B48;
+  }
+
+
   .business-profile-tabs-btn{
     background-color: #0066FF;
     color: #FFFFFF;
@@ -4235,8 +4260,254 @@ input[type=number] {
     width: 100% !important;
   }
   
+
+
+  .business-summary-container {
+    padding: 30px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+  }
+
+  .business-summary-container .business-summary-header-title {
+    font-size: 25px;
+    font-weight: 700;
+    color: #032B48;
+  }
+
+  .business-summary-container .business-summary-header-description {
+    font-size: 18px;
+    font-weight: 400;
+    color: #032B48;
+    margin-bottom: 0px !important;
+  }
+
+  .business-summary-container .business-summary-price {
+    font-size: 18px;
+    font-weight: 400;
+    color: #032B48;
+    margin-bottom: 0px !important;
+  }
+
+  .business-summary-form .form-group  label{
+    font-size: 14px;
+    font-weight: 400;
+    color: #BCBCBC;
+  }
+
+  .business-summary-form .form-group .business-summary-form-textarea{
+    border: 1px solid #BCBCBC;
+    border-radius: 10px;
+    padding: 15px 10px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #032B48 !important;
+    outline: none !important;
+  }
+
+  .business-summary-form .form-group .business-summary-form-textarea:focus{
+    outline: none !important;
+    box-shadow: none;
+    color: #032B48 !important;
+  }
+
+  .business-summary-form .business-summary-form-button-button {
+    background-color: #0066FF;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 60px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+  }
+
+  .business-summary-form .business-summary-form-description .business-summary-form-description-text {
+    font-size: 14px;
+    font-weight: 400;
+    color: #032B48;
+    width: 55%;
+  }
+
+
+  .business-summary-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
-   
+  .business-summary-modal-content {
+    position: relative;
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .business-summary-modal-overlay .close-from-btn{
+    font-size: 18px;
+    color: #032B48;
+  }
+
+  .business-summary-modal-overlay .business-summary-first-modal-title{
+    font-size: 25px;
+    font-weight: 700;
+    color: #032B48;
+  }
+
+  .business-summary-modal-overlay .first-modal-form label{
+    font-size: 14px;
+    font-weight: 400;
+    color: #BCBCBC;
+    margin-bottom: 4px !important;
+  }
+
+  .business-summary-modal-overlay .first-modal-form input{
+    border: 1px solid #BCBCBC;
+    border-radius: 10px;
+    padding: 15px 10px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #032B48 !important;
+  }
+
+  .business-summary-modal-overlay .first-modal-form input:focus{
+    outline: none !important;
+    box-shadow: none;
+    color: #032B48 !important;
+  }
+
+  .business-summary-modal-overlay .first-modal-form-button{
+    background-color: #0066FF;
+    border: none;
+    border-radius: 10px;
+    padding: 13px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #FFFFFF;
+  }
+
+  /* Only affect inputs with class `no-calendar` */
+  /* input.no-calendar::-webkit-calendar-picker-indicator {
+    opacity: 0;       
+  cursor: pointer;   
+  position: absolute;
+  right: 0;
+  pointer-events: auto;
+  width: auto;
+  height: auto;
+  } */
+
+  .business-summary-second-modal-content{
+    padding: 30px 40px;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  }
+
+
+  .business-summary-second-modal-content .treatment_success_btn{
+    background-color: #ffffff00;
+    border: 1px solid #0066FF;
+    border-radius: 30px;
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #0066FF;
+  }
+
+  .business-summary-second-modal-content .treatment_success_btn img{
+    width: 18px;
+    height: 23px;
+    margin-left: 8px;
+  }
+
+  .second-modal-content-stars-item .stars-item-left{
+    font-size: 14px;
+    font-weight: 400;
+    color: #032B48;
+  }
+
+  .second-modal-content-stars-item .stars-item-right{
+    background-color: #0066FF;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+
+  .business-summary-second-modal-content h3{
+    font-size: 22px;
+    font-weight: 700;
+    color: #032B48;
+  }
+
+  .business-summary-second-modal-content p{
+    font-size: 18px;
+    font-weight: 400;
+    color: #032B48;
+  }
+
+  .business-summary-second-modal-content h6{
+    font-size: 18px;
+    font-weight: 700;
+    color: #032B48;
+  }
+
+
+  .business-summary-second-modal-content .stars-item-right-text{
+    font-size: 14px;
+    font-weight: 400;
+    color: #FFFFFF;
+  }
+
+  .business-summary-second-modal-content .stars-item-left-text{
+    font-size: 18px;
+    font-weight: 400;
+    color: #032B48;
+  }
+  
+
+  .business-summary-final-modal-content {
+    padding: 30px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .business-summary-final-modal-content .business-summary-final-modal-content-title{
+    font-size: 25px;
+    font-weight: 700;
+    color: #032B48;
+  }
+
+
+    @media (max-width: 768px) {
+    .time-button-group {
+      flex-direction: column !important;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .time-button-group {
+      flex-direction: row !important;
+    }
+  }
+  
+  
+
+
+
+
+  
+  
 /* ====================Ahmer css end========================== */
 
 
