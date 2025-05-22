@@ -17,7 +17,15 @@ import Login from './components/pages/Auth/Login/login';
 import ForgotPassword from './components/pages/Auth/Login/forgot_password';
 import CodeVerification from './components/pages/Auth/Login/code_verification';
 import NewPassword from './components/pages/Auth/Login/new_password';
+<<<<<<< HEAD
 import BusinessProfileHome from './components/pages/Search_and_make_an_appointment/Business_Profile_Home';
+=======
+import Signup from './components/pages/Auth/Signup';
+import Appointment from './components/pages/Appointment/Appoint';
+import AppointmentSearch from './components/pages/Appointment/AppointSearch';
+import Dashboard from './components/pages/Dashboard/Dashboard';
+
+>>>>>>> origin/hammadDev
 import './App.css';
 
 function HomePage() {
@@ -48,7 +56,14 @@ function App() {
         <Route path="/code-verification" element={<CodeVerification />} />
         <Route path="/new-password" element={<NewPassword />} />    
         <Route path="/business-profile-home" element={<BusinessProfileHome />} />
-        {/* Ahmer routes end */}
+        
+        <Route path="/" element={<HomePage />} />
+        <Route path="/appointment" element={<Appointment />} />
+        <Route path="/appoint-search" element={<AppointmentSearch />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/signup" element={<Signup />} />
+        
+       
       </Routes>
    
   );

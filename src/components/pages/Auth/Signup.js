@@ -209,17 +209,31 @@ const Signup = () => {
         birthDate: '',
         businessName: '',
         businessId: '',
-        businessAddress: ''
+        businessAddress: '',
+        businessLogo: null,
+        businessCover: null,
+        businessText: '',
+        businessHours: {
+            sunday: { isOpen: false, start: '08:00', end: '16:00' },
+            monday: { isOpen: false, start: '08:00', end: '16:00' },
+            tuesday: { isOpen: false, start: '08:00', end: '16:00' },
+            wednesday: { isOpen: false, start: '08:00', end: '16:00' },
+            thursday: { isOpen: false, start: '08:00', end: '16:00' },
+            friday: { isOpen: false, start: '08:00', end: '16:00' },
+            saturday: { isOpen: false, start: '08:00', end: '16:00' }
+        }
     });
 
     const [showPassword, setShowPassword] = useState(false);
-    const [currentStep, setCurrentStep] = useState(1);
-    const totalSteps = 4;
+    const [currentStep, setCurrentStep] = useState(0);
+    const totalSteps = 6;
     const [treatments, setTreatments] = useState([]); // Regular treatments
     const [chlorinations, setChlorinations] = useState([]); // Chlorination packages
     const [showTreatmentPopup, setShowTreatmentPopup] = useState(false);
     const [showChlorinationPopup, setShowChlorinationPopup] = useState(false);
     const [editingTreatmentIndex, setEditingTreatmentIndex] = useState(null);
+    const [logoPreview, setLogoPreview] = useState(null);
+    const [coverPreview, setCoverPreview] = useState(null);
 
     // Regular treatment handlers
     const handleAddTreatment = (detail) => {
@@ -267,15 +281,80 @@ const Signup = () => {
         }));
     };
 
+    const handleBusinessHoursChange = (day, field, value) => {
+        setFormData(prev => ({
+            ...prev,
+            businessHours: {
+                ...prev.businessHours,
+                [day]: {
+                    ...prev.businessHours[day],
+                    [field]: field === 'isOpen' ? value : value
+                }
+            }
+        }));
+    };
+
+    const handleFileChange = (e, type) => {
+        const file = e.target.files[0];
+        if (file) {
+            setFormData(prev => ({
+                ...prev,
+                [type]: file
+            }));
+
+            // Create preview URL
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                if (type === 'businessLogo') {
+                    setLogoPreview(reader.result);
+                } else {
+                    setCoverPreview(reader.result);
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const handleRemoveFile = (type) => {
+        setFormData(prev => ({
+            ...prev,
+            [type]: null
+        }));
+        if (type === 'businessLogo') {
+            setLogoPreview(null);
+        } else {
+            setCoverPreview(null);
+        }
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (formData.email && formData.password && currentStep === 1) {
+        if (currentStep === 0 && formData.email && formData.password) {
+            setCurrentStep(1);
+        } else if (currentStep === 1 && formData.firstName && formData.lastName && formData.gender && formData.birthDate) {
             setCurrentStep(2);
-        } else if (currentStep === 2 && formData.firstName && formData.lastName && formData.gender && formData.birthDate) {
+        } else if (currentStep === 2 && formData.businessName && formData.businessId && formData.businessAddress) {
             setCurrentStep(3);
-        } else if (currentStep === 3 && formData.businessName && formData.businessId && formData.businessAddress) {
+        } else if (currentStep === 3) {
+            // Check if both treatments and chlorination packages are added
+            if (treatments.length === 0) {
+                alert('אנא הוסף לפחות טיפול אחד לפני שתמשיך');
+                return;
+            }
+            if (chlorinations.length === 0) {
+                alert('אנא הוסף לפחות חבילת הכלרה אחת לפני שתמשיך');
+                return;
+            }
             setCurrentStep(4);
         } else if (currentStep === 4) {
+            // Check if at least one business day is selected
+            const hasSelectedDay = Object.values(formData.businessHours).some(day => day.isOpen);
+            if (!hasSelectedDay) {
+                alert('אנא בחר לפחות יום עבודה אחד לפני שתמשיך');
+                return;
+            }
+            setCurrentStep(5);
+        } else if (currentStep === 5) {
             // Handle final submission
             console.log('Form submitted:', { ...formData, treatments, chlorinations });
         }
@@ -286,14 +365,14 @@ const Signup = () => {
     };
 
     const handlePrevStep = () => {
-        if (currentStep > 1) {
+        if (currentStep > 0) {
             setCurrentStep(currentStep - 1);
         }
     };
 
     const calculateProgress = () => {
         let progress = 0;
-        const totalSteps = 4;
+        const totalSteps = 6;
 
         // Step 1: Email and password
         if (currentStep >= 1) {
@@ -333,19 +412,46 @@ const Signup = () => {
             }
         }
 
+        // Step 5: Business hours
+        if (currentStep === 5) {
+            // Only count filled business hours
+            const hasFilledBusinessHours = Object.values(formData.businessHours).every(hours => hours.isOpen);
+            if (hasFilledBusinessHours) {
+                progress = 5;
+            } else {
+                return (4.5 / totalSteps) * 100;
+            }
+        }
+
+        // Step 6: Business page setup
+        if (currentStep === 6) {
+            // Only count filled business page setup
+            const hasFilledBusinessPageSetup = formData.businessText.trim() !== '' && formData.businessCover !== null;
+            if (hasFilledBusinessPageSetup) {
+                progress = 6;
+            } else {
+                return (5.5 / totalSteps) * 100;
+            }
+        }
+
         return (progress / totalSteps) * 100;
     };
 
-    const renderProgressSlider = () => (
-        <div className="progress-slider-container">
-            <div className="progress-slider">
-                <div
-                    className="progress-slider-fill"
-                    style={{ width: `${calculateProgress()}%` }}
-                />
+    const renderProgressSlider = () => {
+        const safeStep = Math.max(0, Math.min(currentStep, 6));
+        return (
+            <div className="progress-slider-container">
+                <div className="progress-segments-bar">
+                    {[...Array(6)].map((_, index) => (
+                        <div
+                            key={index}
+                            className={`progress-segment-bar${index < safeStep && safeStep > 0 ? ' active' : ''}`}
+                        />
+                    ))}
+                </div>
             </div>
-        </div>
-    );
+        );
+    };
 
     const renderStepOne = () => (
         <>
@@ -355,8 +461,9 @@ const Signup = () => {
             </div>
             <div className='google-button mb-4'>
                 <button className="google-signup-button" onClick={handleGoogleSignup}>
+                Sign up with Google
                     <img src={googleIcon} alt="Google" className="google-icon" />
-                    Sign up with Google
+                  
                 </button>
             </div>
 
@@ -560,8 +667,8 @@ const Signup = () => {
                     <div className="details-list">
                         {treatments.map((detail, index) => (
                             <div key={index} className="detail-item">
-                                <span className="treatment-info">
-                                    <span className="treatment-name">{detail.name}</span>
+                                <span className="treatment-info treatment-infoname">
+                                    <span className="treatment-name ">{detail.name}</span>
                                     <span className="treatment-duration">
                                         {detail.duration === "60" ? "שעה" : 
                                          detail.duration === "30" ? "דקות" : 
@@ -658,9 +765,180 @@ const Signup = () => {
         </>
     );
 
+    const renderBusinessHours = () => (
+        <>
+            <div className="text-end mb-4">
+                <h3 className="hebrew-text screen1-text">על מנת שנתחיל אנא מלאו את</h3>
+                <h3 className="hebrew-text screen1-text">הפרטים הבאים</h3>
+            </div>
+            {renderProgressSlider()}
+            <h3 className="hebrew-text screen1-text">שעות הפעילות בעסק</h3>
+            
+            <div className="business-hours-form">
+                {Object.entries(formData.businessHours).map(([day, hours]) => (
+                    <div key={day} className="hours-row">
+                        <div className="day-checkbox">
+                            <input
+                                type="checkbox"
+                                checked={hours.isOpen}
+                                onChange={(e) => handleBusinessHoursChange(day, 'isOpen', e.target.checked)}
+                                id={`checkbox-${day}`}
+                            />
+                        </div>
+                        <div className="day-label">
+                            <label htmlFor={`checkbox-${day}`}>
+                                {day === 'sunday' && 'יום ראשון'}
+                                {day === 'monday' && 'יום שני'}
+                                {day === 'tuesday' && 'יום שלישי'}
+                                {day === 'wednesday' && 'יום רביעי'}
+                                {day === 'thursday' && 'יום חמישי'}
+                                {day === 'friday' && 'יום שישי'}
+                                {day === 'saturday' && 'יום שבת'}
+                            </label>
+                        </div>
+                        <div className="time-inputs">
+                            <input
+                                type="time"
+                                className="custom-time-input"
+                                value={hours.start}
+                                onChange={(e) => handleBusinessHoursChange(day, 'start', e.target.value)}
+                                disabled={!hours.isOpen}
+                            />
+                            <input
+                                type="time"
+                                className="custom-time-input"
+                                value={hours.end}
+                                onChange={(e) => handleBusinessHoursChange(day, 'end', e.target.value)}
+                                disabled={!hours.isOpen}
+                            />
+                        </div>
+                    </div>
+                ))}
+                
+                <div className='buttons'>
+                    <button
+                        type="button"
+                        className="btn-primary continue-button col-6 btn11"
+                        onClick={handlePrevStep}
+                    >
+                        חזרה
+                    </button>
+                    <button 
+                        type="submit" 
+                        className="btn btn-primary continue-button col-6 btn12"
+                    >
+                        המשך
+                    </button>
+                </div>
+            </div>
+        </>
+    );
+
+    const renderBusinessPageSetup = () => (
+        <>
+            <div className="text-end mb-4">
+                <h3 className="hebrew-text screen1-text">כמעט סיימנו!</h3>
+            </div>
+            {renderProgressSlider()}
+            <h3 className="hebrew-text screen1-text">עיצוב עמוד העסק שלך</h3>
+            
+            <div className="business-page-form">
+                <div className="mb-4">
+                    
+                    <div className={`upload-box ${logoPreview ? 'has-preview' : ''}`}>
+                        <input
+                            type="file"
+                            className="file-input"
+                            id="businessLogo"
+                            accept="image/*"
+                            onChange={(e) => handleFileChange(e, 'businessLogo')}
+                        />
+                        {logoPreview ? (
+                            <>
+                                <img src={logoPreview} alt="Logo Preview" className="upload-preview" />
+                                <button
+                                    type="button"
+                                    className="upload-remove"
+                                    onClick={() => handleRemoveFile('businessLogo')}
+                                >
+                                    ×
+                                </button>
+                            </>
+                        ) : (
+                            <div className="upload-placeholder">
+                                
+                                <span>לחץ/י להשלמת לוגו העסק</span>
+                            </div>
+                        )}
+                    </div>
+                </div>
+                
+                <div className="mb-4">
+                    
+                    <div className={`upload-box ${coverPreview ? 'has-preview' : ''}`}>
+                        <input
+                            type="file"
+                            className="file-input"
+                            id="businessCover"
+                            accept="image/*"
+                            onChange={(e) => handleFileChange(e, 'businessCover')}
+                        />
+                        {coverPreview ? (
+                            <>
+                                <img src={coverPreview} alt="Cover Preview" className="upload-preview" />
+                                <button
+                                    type="button"
+                                    className="upload-remove"
+                                    onClick={() => handleRemoveFile('businessCover')}
+                                >
+                                    ×
+                                </button>
+                            </>
+                        ) : (
+                            <div className="upload-placeholder">
+                                
+                                <span>לחץ/י להשלמת תמונת ראשית</span>
+                            </div>
+                        )}
+                    </div>
+                </div>
+                
+                <div className="mb-4">
+                    
+                    <textarea
+                        className="form-control text-area-custom"
+                        rows="3"
+                        placeholder="נתן כיתוב להופיע כאן לדוגמא..."
+                        value={formData.businessText}
+                        onChange={(e) => setFormData(prev => ({
+                            ...prev,
+                            businessText: e.target.value
+                        }))}
+                    ></textarea>
+                </div>
+
+                <div className='buttons'>
+                    <button
+                        type="button"
+                        className="btn-primary continue-button col-6 btn11"
+                        onClick={handlePrevStep}
+                    >
+                        חזרה
+                    </button>
+                    <button 
+                        type="submit" 
+                        className="btn btn-primary continue-button col-6 btn12"
+                    >
+                        סיימנו!
+                    </button>
+                </div>
+            </div>
+        </>
+    );
+
     return (
         <div className='container-fluid signup-container'>
-            <div className='row'>
+            <div className='row calendar-sectionrow'>
                 <div className='col-6 md-6 calendar-section'>
                     <div className="calendar-image-container">
                         <img
@@ -674,13 +952,15 @@ const Signup = () => {
                 <div className='col-6 md-6 form-section'>
                     <div className="form-container">
                         <form className='Signup-form' onSubmit={handleSubmit}>
-                            {currentStep === 1 && renderStepOne()}
-                            {currentStep === 2 && renderStepTwo()}
-                            {currentStep === 3 && renderStepThree()}
-                            {currentStep === 4 && renderStepFour()}
+                            {currentStep === 0 && renderStepOne()}
+                            {currentStep === 1 && renderStepTwo()}
+                            {currentStep === 2 && renderStepThree()}
+                            {currentStep === 3 && renderStepFour()}
+                            {currentStep === 4 && renderBusinessHours()}
+                            {currentStep === 5 && renderBusinessPageSetup()}
                         </form>
 
-                        {currentStep === 1 && (
+                        {currentStep === 0 && (
                             <>
                                 <div className="terms-section text-center mt-3">
                                     <p>

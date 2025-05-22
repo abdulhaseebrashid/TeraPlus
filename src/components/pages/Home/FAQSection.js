@@ -39,7 +39,7 @@ export default function FAQSection() {
 
     return (
         <div className="container">
-            <div className="row d-felx rtl">
+            <div className="row d-felx ">
                 <div className="col-lg-6 col-md-12 order-1">
                     
                 <div className="faq-section-left">
