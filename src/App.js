@@ -14,7 +14,6 @@ import Advantages from './components/pages/Home/Advantages';
 import Hero from './components/pages/Home/Hero';
 
 import Login from './components/pages/Auth/Login/login';
-import Signup from './components/pages/Auth/Signup';
 import ForgotPassword from './components/pages/Auth/Login/forgot_password';
 import CodeVerification from './components/pages/Auth/Login/code_verification';
 import NewPassword from './components/pages/Auth/Login/new_password';
@@ -43,13 +42,13 @@ function App() {
   return (
     
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        {/* Ahmer routes */}
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/code-verification" element={<CodeVerification />} />
-        <Route path="/new-password" element={<NewPassword />} />
+        <Route path="/new-password" element={<NewPassword />} />    
         <Route path="/business-profile-home" element={<BusinessProfileHome />} />
+        {/* Ahmer routes end */}
       </Routes>
    
   );

@@ -4009,6 +4009,15 @@ input[type=number] {
     color: #032B48;
   }
 
+  .business-profile-home-left-container .review-section .review-section-header .review-section-button{
+    background-color: transparent;
+    color: #032B48;
+    border: 1px solid #032B48;
+    padding: 8px 10px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
   .business-profile-home-left-container .review-section-content .review-section-header .review-name h4 {
     font-size: 18px;
     font-weight: 700;
@@ -4147,6 +4156,21 @@ input[type=number] {
   .therapist-time-container .time-button.active {
     border-color: #0066ff;
     color: #0066ff;
+  }
+
+  .time-button-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 per row by default */
+    gap: 12px;
+    width: 100%;
+  }
+  
+  @media (min-width: 992px) { /* lg and up */
+    .time-button-grid {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 12px;
+    }
   }
 
 
@@ -4327,7 +4351,56 @@ input[type=number] {
     width: 55%;
   }
 
+  @media (max-width: 1024px) {
+    .business-summary-form .business-summary-form-description .business-summary-form-description-text {
+      width: 100%;
+    }
+    .business-summary-container .business-summary-header-description,
+    .business-summary-container .business-summary-price {
+      font-size: 16px;
+    }
+    .business-summary-form-textarea {
+      height: 120px !important; /* Adjust as needed */
+    }
+  }
 
+  @media (max-width: 768px) {
+    .business-summary-form .business-summary-form-description .business-summary-form-description-text {
+      width: 100%;
+    }
+    .business-summary-container .business-summary-header-description,
+    .business-summary-container .business-summary-price {
+      font-size: 16px;
+    }
+    .business-summary-form-textarea {
+      height: 120px !important; /* Adjust as needed */
+    }
+  }
+
+  @media (max-width: 576px) {
+    .form-control {
+        background-color: #fff !important;
+    }
+    .business-summary-form-textarea {
+      height: 120px !important; /* Adjust as needed */
+    }
+}
+
+  @media (max-width: 480px) {
+    .business-summary-form .business-summary-form-description .business-summary-form-description-text {
+      width: 100%;
+    }
+    .business-summary-container .business-summary-header-description,
+    .business-summary-container .business-summary-price {
+      font-size: 16px;
+    }
+    .business-summary-form-textarea {
+      height: 120px !important; /* Adjust as needed */
+    }
+  }
+
+
+/* popups Style */
   .business-summary-modal-overlay {
     position: fixed;
     top: 0;
@@ -4500,12 +4573,205 @@ input[type=number] {
       flex-direction: row !important;
     }
   }
+
+
+  .business-payment-container{
+    padding: 40px 40px;
+    background-color: #F8FBFF;
+    height: 100vh;
+    align-content: center;
+  }
+
+  .business-payment-content .business-payment-title{
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+  }
+
+  .business-payment-content .business-payment-text{
+    font-size: 18px;
+    font-weight: 400;
+    color: #000;
+    width: 85%;
+  }
+
+  .business-payment-btns .business-payment-button{
+    background-color: transparent;
+    border: 1px solid #0066FF;
+    border-radius: 10px;
+    padding: 15px 15px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0066FF;
+  }
+
+  .business-payment-btns .business-payment-button-full{
+    background-color: #0066FF;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-top: 80px;
+  }
+
+  .business-payment-left-bg {
+    background-color: #Fff;
+    padding: 30px;
+    border-radius: 20px;
+  }
+
+  .business-payment-left-bg .business-payment-left .business-payment-title{
+    font-size: 25px;
+    font-weight: 700;
+    color: #000;
+  }
+
+  .business-payment-left-bg .business-payment-left .business-payment-left-logo .payment-logo img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .business-payment-left-bg .business-payment-left .business-payment-left-logo .package-name-title h5{
+    font-size: 18px;
+    font-weight: 700;
+    color: #032B48;
+    margin-bottom: 0px !important;
+  } 
+
+  .business-payment-left-bg .business-payment-left .business-payment-left-logo .package-name-title p{
+    font-size: 14px;
+    font-weight: 400;
+    color: #838383;
+    margin-bottom: 0px !important;
+  }
+
+  .business-payment-left-bg .business-payment-left .package-prices h5{
+    font-size: 18px;
+    font-weight: 700;
+    color: #032B48;
+    margin-bottom: 0px !important;
+  }       
+
+  .business-payment-left-bg .business-payment-left .package-prices p{
+    font-size: 18px;
+    font-weight: 400;
+    color: #032B48;
+    margin-bottom: 0px !important;
+  }
+
+  .payment-coupon-from .coupon-code-input label{
+    color: #BCBCBC;
+    font-size: 14px;
+    font-weight: 400;
+    padding-bottom: 5px;
+  }
+
+  .payment-coupon-from .coupon-code-input input{
+    border: 1px solid #BCBCBC;
+    border-radius: 10px;
+    padding: 15px 10px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .payment-coupon-from .coupon-code-input input:focus{
+    outline: none !important;
+    box-shadow: none;
+    color: #032B48 !important;
+  }
+  
+  .payment-coupon-from .coupon-code-button-container .coupon-code-button{
+    background-color: #F2F2F2;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #838383;
+  }
+
+  @media (max-width: 1024px) {
+    .business-payment-content .business-payment-text{
+      width: 100%;
+    }
+    .business-payment-btns .business-payment-button-full{
+      margin-top: 20px;
+    }
+
+    .business-payment-container{
+      padding: 40px 20px;
+      height: 100% !important;
+    }
+
+    .business-payment-left-bg{
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .coupon-code-input{
+      width: 45% !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .business-payment-content .business-payment-text{
+      width: 100%;
+      margin-bottom: 0px !important;
+    }
+    .business-payment-btns .business-payment-button-full{
+      margin-top: 20px;
+    }
+
+    .business-payment-container{
+      padding: 40px 20px;
+      height: 100% !important;
+    }
+
+    .business-payment-left-bg{
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .coupon-code-input{
+      width: 45% !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .business-payment-content .business-payment-text{
+      width: 100%;
+      margin-bottom: 0px !important;
+    }
+
+    .business-payment-btns .business-payment-button-full{
+      margin-top: 20px; 
+    }
+
+    .business-payment-container{
+      padding: 40px 20px;
+      height: 100% !important;
+    }
+
+    .business-payment-left-bg{
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .coupon-code-input{
+      width: 45% !important;
+    }
+  }
+  
+  
   
   
 
-
-
-
+  
+  
+  
   
   
 /* ====================Ahmer css end========================== */

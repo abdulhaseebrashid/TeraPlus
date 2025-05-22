@@ -78,16 +78,16 @@ const BusinessSelectDate = ({ onComplete }) => {
             <div className="col-lg-12">
               <div className="d-flex justify-content-start align-items-start flex-column gap-2">
                 <h5 className="therapist-time-title">בחירת שעת הטיפול</h5>
-                <div className="d-flex justify-content-start align-items-center flex-wrap gap-4 right-to-left">
-                {times.map((time) => (
-                  <button
-                    key={time}
-                    className={`btn time-button ${selectedTime === time ? 'active' : ''}`}
-                    onClick={() => setSelectedTime(time)}
-                  >
-                    {time}
-                  </button>
-                ))}
+                <div className="time-button-grid right-to-left">
+                  {times.map((time) => (
+                    <button
+                      key={time}
+                      className={`btn time-button ${selectedTime === time ? 'active' : ''}`}
+                      onClick={() => setSelectedTime(time)}
+                    >
+                      {time}
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
