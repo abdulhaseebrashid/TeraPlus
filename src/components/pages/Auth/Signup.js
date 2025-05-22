@@ -225,7 +225,7 @@ const Signup = () => {
     });
 
     const [showPassword, setShowPassword] = useState(false);
-    const [currentStep, setCurrentStep] = useState(1);
+    const [currentStep, setCurrentStep] = useState(0);
     const totalSteps = 6;
     const [treatments, setTreatments] = useState([]); // Regular treatments
     const [chlorinations, setChlorinations] = useState([]); // Chlorination packages
@@ -329,13 +329,13 @@ const Signup = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (formData.email && formData.password && currentStep === 1) {
+        if (currentStep === 0 && formData.email && formData.password) {
+            setCurrentStep(1);
+        } else if (currentStep === 1 && formData.firstName && formData.lastName && formData.gender && formData.birthDate) {
             setCurrentStep(2);
-        } else if (currentStep === 2 && formData.firstName && formData.lastName && formData.gender && formData.birthDate) {
+        } else if (currentStep === 2 && formData.businessName && formData.businessId && formData.businessAddress) {
             setCurrentStep(3);
-        } else if (currentStep === 3 && formData.businessName && formData.businessId && formData.businessAddress) {
-            setCurrentStep(4);
-        } else if (currentStep === 4) {
+        } else if (currentStep === 3) {
             // Check if both treatments and chlorination packages are added
             if (treatments.length === 0) {
                 alert('אנא הוסף לפחות טיפול אחד לפני שתמשיך');
@@ -345,16 +345,16 @@ const Signup = () => {
                 alert('אנא הוסף לפחות חבילת הכלרה אחת לפני שתמשיך');
                 return;
             }
-            setCurrentStep(5);
-        } else if (currentStep === 5) {
+            setCurrentStep(4);
+        } else if (currentStep === 4) {
             // Check if at least one business day is selected
             const hasSelectedDay = Object.values(formData.businessHours).some(day => day.isOpen);
             if (!hasSelectedDay) {
                 alert('אנא בחר לפחות יום עבודה אחד לפני שתמשיך');
                 return;
             }
-            setCurrentStep(6);
-        } else if (currentStep === 6) {
+            setCurrentStep(5);
+        } else if (currentStep === 5) {
             // Handle final submission
             console.log('Form submitted:', { ...formData, treatments, chlorinations });
         }
@@ -365,7 +365,7 @@ const Signup = () => {
     };
 
     const handlePrevStep = () => {
-        if (currentStep > 1) {
+        if (currentStep > 0) {
             setCurrentStep(currentStep - 1);
         }
     };
@@ -437,16 +437,21 @@ const Signup = () => {
         return (progress / totalSteps) * 100;
     };
 
-    const renderProgressSlider = () => (
-        <div className="progress-slider-container">
-            <div className="progress-slider">
-                <div
-                    className="progress-slider-fill"
-                    style={{ width: `${calculateProgress()}%` }}
-                />
+    const renderProgressSlider = () => {
+        const safeStep = Math.max(0, Math.min(currentStep, 6));
+        return (
+            <div className="progress-slider-container">
+                <div className="progress-segments-bar">
+                    {[...Array(6)].map((_, index) => (
+                        <div
+                            key={index}
+                            className={`progress-segment-bar${index < safeStep && safeStep > 0 ? ' active' : ''}`}
+                        />
+                    ))}
+                </div>
             </div>
-        </div>
-    );
+        );
+    };
 
     const renderStepOne = () => (
         <>
@@ -947,15 +952,15 @@ const Signup = () => {
                 <div className='col-6 md-6 form-section'>
                     <div className="form-container">
                         <form className='Signup-form' onSubmit={handleSubmit}>
-                            {currentStep === 1 && renderStepOne()}
-                            {currentStep === 2 && renderStepTwo()}
-                            {currentStep === 3 && renderStepThree()}
-                            {currentStep === 4 && renderStepFour()}
-                            {currentStep === 5 && renderBusinessHours()}
-                            {currentStep === 6 && renderBusinessPageSetup()}
+                            {currentStep === 0 && renderStepOne()}
+                            {currentStep === 1 && renderStepTwo()}
+                            {currentStep === 2 && renderStepThree()}
+                            {currentStep === 3 && renderStepFour()}
+                            {currentStep === 4 && renderBusinessHours()}
+                            {currentStep === 5 && renderBusinessPageSetup()}
                         </form>
 
-                        {currentStep === 1 && (
+                        {currentStep === 0 && (
                             <>
                                 <div className="terms-section text-center mt-3">
                                     <p>

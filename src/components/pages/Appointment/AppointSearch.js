@@ -1,13 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { Container, Button, Navbar, Nav } from 'react-bootstrap';
-import './Appoint.css';
 import '../../../assets/css/style.css';
-import leftImage from '../../../assets/img/Appointment/Appoint-Feed.png';
 import AppointmentLogo from '../../../assets/icons/Appointmentlogo.svg';
 import Appointmentuser from '../../../assets/icons/Appointmentuser.svg';
 import Crad1 from '../../../assets/img/Appointment/Appoint.png';
 import Crad2 from '../../../assets/img/Appointment/Card2.png';
-import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Link } from 'react-router-dom';
 

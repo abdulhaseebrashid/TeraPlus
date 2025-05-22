@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import '../../../assets/css/style.css';
-import MainImage from '../../../assets/img/Hero_images/heroimg.png';
+import MainImage from '../../../assets/img/Hero_images/heroimg1.png';
 import MobileImage from '../../../assets/img/Hero_images/minheroimg1.png';
 
 

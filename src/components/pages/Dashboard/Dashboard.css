@@ -1,0 +1,221 @@
+/* Dashboard.css */
+.dashboard-container {
+  min-height: 100vh;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.main-content {
+  background: #f8fafc;
+  width: 100%;
+  min-height: 100vh;
+  padding-bottom: 32px;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.dashboard-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0a2342;
+  letter-spacing: 0.5px;
+}
+.dashboard-header-left {
+  display: flex;
+  align-items: center;
+}
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #0a2342;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+.dashboard-summary-card {
+  /* Removed width: 50% !important; */
+}
+.search-box {
+  position: relative;
+
+}
+.search-box input {
+  border-radius: 12px;
+  padding-right: 32px;
+  background: #ffff;
+  border: none;
+  font-size: 1rem;
+  color: #0a2342;
+}
+.search-box i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #b0c4d9;
+  font-size: 1.1rem;
+}
+.dashboard-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.dashboard-tabs-buttons {
+    background: #ffff;
+    padding: 6px 10px;
+    border-radius: 12px;
+}
+.dashboard-tabs .btn {
+  min-width: 120px;
+  font-weight: 500;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  padding: 5px 53px;
+}
+.dashboard-tabs .btn-dark {
+  background: #0a2342;
+  border: none;
+  color: #fff;
+}
+.dashboard-tabs .btn-light {
+  background: #ffff;
+  border: none;
+  color: #0a2342;
+}
+.row.gx-4 {
+  --bs-gutter-x: 2rem;
+}
+.row.gy-4 {
+  --bs-gutter-y: 2rem;
+}
+.card {
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border: none;
+  background: #fff;
+}
+.ai-insights-card {
+  min-height: 320px;
+}
+.ai-insights-card .insight {
+  font-size: 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: 8px;
+}
+.dot-green { background: #4caf50; }
+.dot-blue { background: #3B82F6; }
+.dot-red { background: #e57373; }
+.summary-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+  border-radius: 20px;
+  min-height: 142px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.summary-label {
+  font-size: 1rem;
+  color: #BCBCBC;
+  margin-bottom: 0.5rem;
+}
+.summary-value {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-left: 12px;
+  margin-right: 8px;
+}
+.summary-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  margin-left: 8px;
+  color: #fff;
+}
+.bg-purple { background: #a084e8 !important; }
+.bg-blue { background: #3B82F6 !important; }
+.bg-green { background: #4caf50 !important; }
+.bg-red { background: #e57373 !important; }
+.summary-change {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+.bg-insight-green {
+  background: #e6f4ea !important;
+}
+.bg-insight-blue {
+  background: #e6f0fa !important;
+}
+.bg-insight-red {
+  background: #fae6e6 !important;
+}
+.card[dir="rtl"], .ai-insights-card[dir="rtl"] {
+  direction: rtl;
+}
+.summary-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  /* No background color here */
+}
+.summary-svg-icon {
+  width: 65px;
+  height: 65px;
+}
+.badge {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  padding: 2px 2px;
+  border-radius: 5px;
+  vertical-align: middle;
+}
+.bg-success {
+    background:#D1FFCD33 !important;
+    color: #5EBE56 !important;
+}
+.bg-danger {
+    background: #D4030733 !important;
+    color: #FF0000;
+}
+.summary-link {
+  color: #000 !important;
+  display: inline-flex;
+  align-items: center;
+}
+.summary-link-arrow {
+  width: 14px;
+  height: 14px;
+  margin-right: 2px;
+  vertical-align: middle;
+}
+
+
+

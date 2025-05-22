@@ -20,6 +20,7 @@ import NewPassword from './components/pages/Auth/Login/new_password';
 import Signup from './components/pages/Auth/Signup';
 import Appointment from './components/pages/Appointment/Appoint';
 import AppointmentSearch from './components/pages/Appointment/AppointSearch';
+import Dashboard from './components/pages/Dashboard/Dashboard';
 
 import './App.css';
 
@@ -45,14 +46,18 @@ function App() {
   return (
     
       <Routes>
+        {/* ================================HammadRoutes======================================================= */}
         <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/appointment" element={<Appointment />} />
+        <Route path="/appoint-search" element={<AppointmentSearch />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/signup" element={<Signup />} />
+        {/* =================================AhmerRoutes==================================================================== */}
+        <Route path="/login" element={<Login />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/code-verification" element={<CodeVerification />} />
         <Route path="/new-password" element={<NewPassword />} />
-        <Route path="/appointment" element={<Appointment />} />
-        <Route path="/appoint-search" element={<AppointmentSearch />} />
+       
       </Routes>
    
   );
