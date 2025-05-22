@@ -177,8 +177,12 @@ const BusinessContactAndReview  = ({ onComplete }) => {
                               <input type="text" className="form-control" name="carriertype" placeholder="חוות דעת על ספא 3030" />
                             </div>
                             <div className="col-12">
-                              <label>מספר ת.ז</label>
-                              <input type="number" className="form-control" name="idNumber" placeholder="123456789" />
+                              <label>הודעה (לא חובה)</label>
+                              <textarea className="form-control" name="message" placeholder="מקום טוב ונעים" />
+                            </div>
+                            <div className="col-12">
+                              <label>על מנת שנעלה את חוות הדעת שלך יש לצרף חשבונית/ קבלה</label>
+                              <input type="file" className="form-control" name="image" />
                             </div>
                           </div>
                           <div className="text-center mt-4">
