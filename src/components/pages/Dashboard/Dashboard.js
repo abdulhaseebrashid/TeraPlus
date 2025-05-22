@@ -53,8 +53,8 @@ export default function Dashboard() {
       <Sidebar />
       <div className="main-content flex-grow-1 p-4">
         {/* Header */}
-        <div className="dashboard-header d-flex align-items-center justify-content-between mb-4">
-          <div className="dashboard-title">לוח בקרה</div>
+        <div className="dashboard-header mb-4">
+          
           <div className="dashboard-header-left d-flex align-items-center">
             
             <div className="search-box">
@@ -66,10 +66,12 @@ export default function Dashboard() {
         </div>
         {/* Tabs */}
         <div className="dashboard-tabs d-flex justify-content-center mb-4">
+        <div className="dashboard-title">לוח בקרה</div>
             <div className="dashboard-tabs-buttons">    
           <button className="btn btn-dark ms-2">מבט כללי</button>
           <button className="btn btn-light">דוחות</button>
             </div>
+            
         </div>
         {/* Cards Row */}
         <div className="row mb-4 gx-4 gy-4">
@@ -161,7 +163,7 @@ export default function Dashboard() {
         {/* Charts Row */}
         <div className="row gx-4 gy-4">
           
-          <div className="col-lg-4">
+          <div className="col-lg-3">
             <div className="card p-3 mb-3">
               <h6 className="mb-3">טיפולים פופולריים</h6>
               <Chart
@@ -174,8 +176,8 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="col-lg-8">
-            <div className="card p-3 mb-3">
-              <div className="d-flex justify-content-between align-items-center mb-2">
+            <div className="card card-chart p-3 mb-3">
+              <div className="d-flex flex-column gap-1 align-items-start mb-2">
                 <h6 className="mb-0">צמיחת העסק</h6>
                 <button className="btn btn-light btn-sm">בין תאריכים</button>
               </div>
