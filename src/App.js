@@ -17,15 +17,12 @@ import Login from './components/pages/Auth/Login/login';
 import ForgotPassword from './components/pages/Auth/Login/forgot_password';
 import CodeVerification from './components/pages/Auth/Login/code_verification';
 import NewPassword from './components/pages/Auth/Login/new_password';
-<<<<<<< HEAD
 import BusinessProfileHome from './components/pages/Search_and_make_an_appointment/Business_Profile_Home';
-=======
 import Signup from './components/pages/Auth/Signup';
 import Appointment from './components/pages/Appointment/Appoint';
 import AppointmentSearch from './components/pages/Appointment/AppointSearch';
 import Dashboard from './components/pages/Dashboard/Dashboard';
 
->>>>>>> origin/hammadDev
 import './App.css';
 
 function HomePage() {
