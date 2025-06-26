@@ -37,8 +37,14 @@ const Footer = () => {
                     <div className="row justify-content-between sec-d" dir="rtl">
                         {/* Logo Column */}
                         <div className="col-12 col-lg-3 mb-4 mb-lg-0 text-center">
-                            <img src={logo2} alt="TheraPlus" className="mb-3 footer-logo" style={{ width: '180px' }} />
-                        </div>
+                        <img
+                            src={logo2}
+                            alt="TheraPlus"
+                            className="mb-3 footer-logo"
+                            style={{ width: '180px', position: 'relative', top: '30px' }}
+                        />
+                    </div>
+
 
                         {/* Navigation Columns */}
                         <div className="col-12 col-lg-8">
@@ -47,19 +53,19 @@ const Footer = () => {
                                 <div className="col-6 col-md-3 mb-4">
                                     <h5 className="footer-heading">אודות</h5>
                                     <ul className="footer-links">
-                                        <li><a href="#">עלינו</a></li>
-                                        <li><a href="#">יתרונות</a></li>
-                                        <li><a href="#">הלקוחות שלנו</a></li>
-                                        <li><a href="#">יצירת קשר</a></li>
+                                        <li><Link to="/about">עלינו</Link></li>
+                                        <li><Link to="/benefits">יתרונות</Link></li>
+                                        <li><Link to="/clients">הלקוחות שלנו</Link></li>
+                                        <li><Link to="/contact">יצירת קשר</Link></li>
                                     </ul>
                                 </div>
                                 {/* לעסקים Column */}
                                 <div className="col-6 col-md-3 mb-4">
                                     <h5 className="footer-heading">לעסקים</h5>
                                     <ul className="footer-links">
-                                        <li><a href="#">הצטרפות</a></li>
-                                        <li><a href="#">תמיכה טכנית</a></li>
-                                        <li><a href="#">תנאי שימוש</a></li>
+                                        <li><Link to="/business-signup">הצטרפות</Link></li>
+                                        <li><Link to="/business-support">תמיכה טכנית</Link></li>
+                                        <li><Link to="/terms">תנאי שימוש</Link></li>
                                     </ul>
                                 </div>
 
@@ -67,8 +73,8 @@ const Footer = () => {
                                 <div className="col-6 col-md-3 mb-4">
                                     <h5 className="footer-heading">ללקוחות</h5>
                                     <ul className="footer-links">
-                                        <li><a href="#">הזמנת תור</a></li>
-                                        <li><a href="#">תמיכה ללקוחות</a></li>
+                                        <li><Link to="/book-appointment">הזמנת תור</Link></li>
+                                        <li><Link to="/customer-support">תמיכה ללקוחות</Link></li>
                                     </ul>
                                 </div>
 
@@ -76,9 +82,9 @@ const Footer = () => {
                                 <div className="col-6 col-md-3 mb-4">
                                     <h5 className="footer-heading">פרטיות</h5>
                                     <ul className="footer-links">
-                                        <li><a href="#">מדיניות פרטיות</a></li>
-                                        <li><a href="#">תנאי שימוש</a></li>
-                                        <li><a href="#">הצהרת נגישות</a></li>
+                                        <li><Link to="/privacy-policy">מדיניות פרטיות</Link></li>
+                                        <li><Link to="/terms">תנאי שימוש</Link></li>
+                                        <li><Link to="/accessibility-statement">הצהרת נגישות</Link></li>
                                     </ul>
                                 </div>
                             </div>

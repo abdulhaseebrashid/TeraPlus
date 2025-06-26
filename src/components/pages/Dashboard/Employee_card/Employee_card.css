@@ -1,0 +1,33 @@
+body{
+    background-color: #F5F5F5;
+}
+.employee-card-section{
+    padding: 20px;
+}
+
+.employee-keeping-button{
+    background-color: #0066FF;
+    color: #fff;    
+    border: none;
+    border-radius: 3px;
+    padding: 8px 20px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.back-to-team-link .back-to-team-link-text{
+    font-size: 18px;
+    font-weight: 400;
+    color: #000000 !important;
+    text-decoration: none;
+}
+
+.employee-personal-diary .personal-diary-button{
+    background-color: #0066FF;
+    color: #fff;    
+    border: none;
+    border-radius: 3px;
+    padding: 8px 20px;
+    font-size: 16px;
+    font-weight: 400;
+}

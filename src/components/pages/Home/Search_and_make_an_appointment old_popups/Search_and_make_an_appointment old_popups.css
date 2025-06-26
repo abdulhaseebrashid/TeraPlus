@@ -1,0 +1,1198 @@
+/* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup Container */
+.popup-container {
+  background: white;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 20px;
+  direction: rtl;
+  text-align: right;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.popup-container.extended {
+  max-height: 90vh;
+  max-width: 600px;
+  padding-bottom: 80px;
+  position: relative;
+  top: 0px;
+}
+
+/* Close Button - UPDATED: Removed circular background */
+.popup-close-btn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: none; /* CHANGED: Removed background */
+  border: none;
+  border-radius: 0; /* CHANGED: Removed circular border-radius */
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+  right: -6px;
+  top: -12px;
+}
+
+.popup-close-btn:hover {
+  background: none; /* CHANGED: Removed hover background */
+}
+
+/* Header */
+.popup-header {
+  margin-bottom: 20px;
+}
+
+.popup-location {
+  top: 15px;
+  position: relative;
+  color: #666;
+  font-size: 15px;
+  margin: 0;
+}
+/* Title */
+.popup-title {
+  margin-bottom: 15px;
+}
+
+.popup-title h2 {
+  font-size: 25px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  line-height: 30px;
+}
+
+/* Description */
+.popup-description {
+  margin-bottom: 20px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.popup-description p {
+  margin: 0 0 5px 0;
+}
+
+/* Selection Box */
+.selection-box {
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.selection-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px dashed #ccc;
+}
+
+.selection-row:last-child {
+  border-bottom: none;
+}
+
+.selection-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.selection-text {
+  font-size: 22px;
+  color: #333;
+}
+
+.guests-info {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #666;
+  font-size: 15px;
+  position: relative;
+  right: 340px;
+}
+
+.team-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Counter Controls */
+.counter-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.counter-btn {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #666;
+  position: relative;
+  right: 60px;
+}
+
+.counter-btn:hover {
+  background: #f0f0f0;
+}
+
+.plus-btn {
+  border-color: white;
+  color: #4285f4;
+  position: relative;
+  right: -60px;
+}
+
+.minus-btn {
+  border-color: #ccc;
+  color: #ccc;
+}
+
+.counter-number {
+  font-size: 16px;
+  color: #333;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Important Info */
+.important-info {
+  margin-bottom: 20px;
+}
+
+.important-info h3 {
+  font-size: 25px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+  position: relative;
+  right: -215px;
+}
+
+.info-text {
+  color: #666;
+  font-size: 14px;
+  line-height: 12px;
+}
+
+.info-text p {
+  margin: 0 0 5px 0;
+}
+
+/* Guest Details */
+.guest-details {
+  margin-bottom: 30px;
+}
+
+.guest-section {
+  border: 2px solid #4285f4;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: white;
+}
+
+.guest-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.guest-header h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.guest-price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.guest-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.field-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.field-label {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+  min-width: 120px;
+}
+
+.dropdown-field {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  font-size: 14px;
+  color: #666;
+  min-width: 140px;
+  cursor: pointer;
+  text-align: right;
+}
+
+.dropdown-field:focus {
+  outline: none;
+  border-color: #4285f4;
+}
+
+.therapist-row {
+  align-items: center;
+}
+
+.therapist-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  min-width: 140px;
+  justify-content: flex-start;
+}
+
+.therapist-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.therapist-name {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Date Selection Styles */
+.date-selection-container {
+  margin-bottom: 30px;
+}
+
+.date-section {
+  border: 2px solid #4285f4;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: white;
+}
+
+.section-heading {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin: 0 0 20px 0;
+  text-align: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.date-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.date-field-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.date-label {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+  min-width: 120px;
+}
+
+.date-dropdown {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  font-size: 14px;
+  color: #666;
+  min-width: 140px;
+  cursor: pointer;
+  text-align: right;
+}
+
+.date-dropdown:focus {
+  outline: none;
+  border-color: #4285f4;
+}
+
+/* Bottom Button */
+.popup-bottom {
+  position: sticky;
+  background: white;
+  padding: 20px 0;
+  margin-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+/* UPDATED: All buttons now have consistent styling */
+.bottom-btn {
+  width: 100%;
+  padding: 15px;
+  background: #d0d0d0; /* Light gray default */
+  color: #666;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bottom-btn:hover {
+  background: #4285f4; /* Blue on hover */
+  color: white;
+}
+
+.bottom-btn.continue-btn {
+  background: #d0d0d0; /* Light gray default */
+  color: #666;
+  cursor: pointer;
+  position: relative;
+  top: 65px;
+}
+
+.bottom-btn.continue-btn:hover {
+  background: #4285f4; /* Blue on hover */
+  color: white;
+}
+
+.bottom-btn.disabled {
+  opacity: 0.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .popup-container {
+    width: 95%;
+    padding: 15px;
+    max-height: 90vh;
+  }
+
+  .popup-container.extended {
+    max-width: 95%;
+    padding-bottom: 70px;
+  }
+
+  .guest-section,
+  .date-section {
+    padding: 15px;
+  }
+
+  .field-row,
+  .date-field-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .field-label,
+  .date-label {
+    min-width: unset;
+    font-size: 14px;
+  }
+
+  .dropdown-field,
+  .date-dropdown {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .therapist-info {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .guest-header h3,
+  .section-heading {
+    font-size: 16px;
+  }
+
+  .guest-price {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .popup-container {
+    width: 98%;
+    padding: 12px;
+  }
+
+  .guest-section,
+  .date-section {
+    padding: 12px;
+  }
+
+  .popup-bottom {
+    padding: 15px 0;
+  }
+}
+
+/* Clean Guest Details Layout */
+.clean-guest-details {
+  margin-bottom: 30px;
+}
+
+.clean-guest-section {
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 0;
+  margin-bottom: 20px;
+  background: white;
+  overflow: hidden;
+}
+
+.clean-guest-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: white;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.clean-guest-header h3 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.clean-guest-price {
+  font-size: 18px;
+  font-weight: 100px;
+  color: #333;
+}
+
+.clean-fields-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.clean-field-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.clean-field-label {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+  text-align: right;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.clean-dropdown {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  font-size: 14px;
+  color: #666;
+  width: 100%;
+  cursor: pointer;
+  text-align: right;
+  direction: rtl;
+  -webkit-appearance: none; /* Remove default arrow in WebKit browsers */
+  -moz-appearance: none; /* Remove default arrow in Firefox */
+  appearance: none; /* Remove default arrow in modern browsers */
+  background-image: url("../../../../assets/icons/arrowdownIcon.svg");
+  background-repeat: no-repeat;
+  background-position: left 15px center; /* Position the icon on the left side */
+  background-size: 16px; /* Adjust icon size as needed */
+  padding-left: 40px; /* Add padding to prevent text overlap with icon */
+}
+
+.clean-dropdown:focus {
+  outline: none;
+  border-color: #4285f4;
+  box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+
+.clean-therapist-field {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  font-size: 14px;
+  color: #333;
+  width: 100%;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Responsive for Clean Layout */
+@media (max-width: 768px) {
+  .clean-fields-container {
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .clean-field-item {
+    margin-bottom: 12px;
+    gap: 6px;
+  }
+
+  .clean-field-label {
+    font-size: 13px;
+  }
+
+  .clean-dropdown,
+  .clean-therapist-field {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .clean-guest-header {
+    padding: 12px 15px;
+  }
+
+  .clean-guest-header h3 {
+    font-size: 14px;
+  }
+
+  .clean-guest-price {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .clean-fields-container {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .clean-guest-header {
+    padding: 10px 12px;
+  }
+}
+
+/* EXACT CALENDAR MATCH - Updated to match the provided image */
+
+.exact-booking-section {
+  margin-top: 24px;
+  padding: 20px;
+  /* background: #f8f9fa; */
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+/* Dynamic Staff Selection */
+.staff-selection-section {
+  margin-bottom: 30px;
+}
+
+.staff-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Horizontal Staff Container */
+.horizontal-staff-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Horizontal Staff Row - All in ONE ROW */
+.horizontal-staff-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.staff-avatar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Staff Image Container with Hover Cross */
+.staff-image-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* REMOVED ALL BACKGROUNDS - Pure Icons Only */
+.staff-frame-img {
+  width: 80px;
+  height: 100px;
+  object-fit: contain;
+  filter: brightness(1) invert(0);
+  position: relative;
+  right: 0px;
+  cursor: pointer;
+  transition: all 0.2s;
+  /* NO background, NO border, NO container */
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.staff-frame-img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* FIXED: Cross Icon - NO BACKGROUND + RIGHT SIDE */
+.staff-remove-cross {
+  position: absolute;
+  top: -5px;
+  right: -5px; /* RIGHT SIDE */
+  width: 20px;
+  height: 20px;
+  /* COMPLETELY REMOVED: All background, border, shadow properties */
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 10;
+}
+
+.staff-image-container:hover .staff-remove-cross {
+  opacity: 1;
+}
+
+.staff-remove-cross:hover {
+  /* REMOVED: All background properties */
+  background: none !important;
+  border: none !important;
+  transform: scale(1.1);
+}
+
+.cross-icon-small {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+  /* Ensure the icon itself has no background */
+  background: transparent !important;
+}
+
+/* Add Staff Image - FrameAddImg.svg */
+.add-staff-img {
+  width: 80px;
+  height: 100px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: all 0.2s;
+  /* NO background, NO border, NO container */
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.add-staff-img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.staff-text-fallback {
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.staff-name {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Keep original add staff button as fallback (hidden by default) */
+.staff-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, white, white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 3px solid transparent;
+  position: relative;
+}
+
+.staff-avatar:hover {
+  border-color: #8b5cf6;
+  transform: scale(1.05);
+}
+
+.staff-avatar.selected {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+}
+
+/* Add Staff Button */
+.add-staff-btn {
+  background: linear-gradient(135deg, #e0e0e0, #bdbdbd);
+  border: 2px dashed #9e9e9e !important;
+}
+
+.add-staff-btn:hover {
+  background: linear-gradient(135deg, #d0d0d0, #a0a0a0);
+  border-color: #757575 !important;
+}
+
+.plus-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.plus-symbol {
+  font-size: 24px;
+  font-weight: bold;
+  color: #666;
+}
+
+/* UPDATED CALENDAR - Exact Match to Provided Image */
+.exact-calendar-section {
+  margin-bottom: 30px;
+}
+
+/* Calendar Header with Navigation - EXACTLY like the image */
+.calendar-header-with-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 20px;
+}
+
+.calendar-nav-arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  font-size: 18px;
+  color: #333;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.calendar-nav-arrow:hover {
+  color: #007bff;
+}
+
+.calendar-month-title-nav {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  text-align: center;
+}
+
+/* Calendar Grid - EXACTLY like the image */
+.exact-calendar-grid {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e8e8e8;
+}
+
+/* Hebrew Day Headers - EXACTLY like the image */
+.exact-calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.day-header {
+  padding: 16px 8px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  border-right: 1px solid #e8e8e8;
+}
+
+.day-header:last-child {
+  border-right: none;
+}
+
+/* Calendar Body - EXACTLY like the image */
+.exact-calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-day {
+  padding: 16px 8px;
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  border-right: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.2s;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  color: #333;
+  font-weight: 500;
+}
+
+.calendar-day:last-child {
+  border-right: none;
+}
+
+.calendar-day:hover {
+  background-color: #f0f8ff;
+  color: #007bff;
+}
+
+/* Previous/Next Month Dates - EXACTLY like the image */
+.calendar-day.prev-month,
+.calendar-day.next-month {
+  color: #ccc;
+  background-color: #fafafa;
+  font-weight: 400;
+}
+
+.calendar-day.prev-month:hover,
+.calendar-day.next-month:hover {
+  background-color: #f5f5f5;
+  color: #999;
+}
+
+/* Selected Date - EXACTLY like the image (blue circle) */
+.calendar-day.selected-date {
+  background-color: #007bff;
+  color: white;
+  font-weight: 600;
+  border-radius: 50%;
+  margin: 4px;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-day.selected-date:hover {
+  background-color: #0056b3;
+}
+
+/* Time Selection */
+.exact-time-section {
+  margin-bottom: 20px;
+}
+
+.time-title {
+  font-size: 27px;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  right: -150px;
+}
+
+.horizontal-time-slots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.time-slot-btn {
+  padding: 22px 26px;
+  border: 1px solid #e0e0e0;
+  border-radius: 25px;
+  background: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #333;
+  min-width: 70px;
+  min-height: 70px;
+}
+
+.time-slot-btn:hover {
+  border-color: #2196f3;
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.time-slot-btn.selected {
+  background-color: #2196f3;
+  border-color: #2196f3;
+  color: white;
+}
+
+.time-slot-btn.selected:hover {
+  background-color: #1976d2;
+  border-color: #1976d2;
+}
+
+/* Bottom Button */
+.exact-confirm-btn {
+  width: 100%;
+  padding: 15px;
+  background: #d0d0d0; /* Light gray default - same as other buttons */
+  color: #666;
+  border: none;
+  border-radius: 10px; /* Same border radius as other buttons */
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease; /* Same transition as other buttons */
+  max-width: 100%; /* Remove max-width restriction */
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  top: 65px; /* Keep same positioning */
+}
+
+.exact-confirm-btn:hover {
+  background: #4285f4; /* Blue on hover - same as other buttons */
+  color: white;
+}
+
+/* Extended popup container for step 3 */
+.popup-container.extended {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .horizontal-staff-row {
+    gap: 10px;
+  }
+
+  .staff-frame-img,
+  .add-staff-img {
+    width: 60px;
+    height: 75px;
+  }
+
+  .staff-remove-cross {
+    width: 18px;
+    height: 18px;
+    top: -3px;
+    right: -3px;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .cross-icon-small {
+    width: 10px;
+    height: 10px;
+  }
+
+  .staff-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .staff-text-fallback {
+    font-size: 10px;
+  }
+
+  .plus-symbol {
+    font-size: 20px;
+  }
+
+  .horizontal-time-slots {
+    gap: 8px;
+  }
+
+  .time-slot-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+    min-width: 60px;
+  }
+
+  .calendar-day {
+    min-height: 42px;
+    font-size: 13px;
+    padding: 12px 6px;
+  }
+
+  .day-header {
+    padding: 12px 6px;
+    font-size: 13px;
+  }
+
+  .calendar-header-with-nav {
+    padding: 0 15px;
+  }
+
+  .calendar-nav-arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .horizontal-staff-row {
+    gap: 8px;
+  }
+
+  .horizontal-time-slots {
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .time-slot-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+    min-width: 55px;
+  }
+
+  .exact-booking-section {
+    padding: 15px;
+  }
+
+  .staff-frame-img,
+  .add-staff-img {
+    width: 50px;
+    height: 60px;
+  }
+
+  .staff-remove-cross {
+    width: 16px;
+    height: 16px;
+    top: -2px;
+    right: -2px;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .cross-icon-small {
+    width: 8px;
+    height: 8px;
+  }
+
+  .staff-avatar {
+    width: 45px;
+    height: 45px;
+  }
+
+  .plus-symbol {
+    font-size: 18px;
+  }
+
+  .calendar-day {
+    min-height: 38px;
+    font-size: 12px;
+    padding: 10px 4px;
+  }
+
+  .day-header {
+    padding: 10px 4px;
+    font-size: 12px;
+  }
+
+  .calendar-header-with-nav {
+    padding: 0 10px;
+  }
+
+  .calendar-nav-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  .calendar-month-title-nav {
+    font-size: 14px;
+  }
+}

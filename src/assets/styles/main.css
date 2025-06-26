@@ -1,0 +1,194 @@
+/* Import Bootstrap Icons */
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css');
+
+/* Base Styles */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero Section */
+.hero {
+  height: 96vh;
+  background-size: cover; /* fills full width and height */
+  background-position: center;
+  background-color: #e6f0f5; /* fallback if image fails */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5983a1;
+}
+
+/* Darker overlay */
+/* .hero-overlay {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+} */
+
+/* Search Bar Section */
+.search-bar {
+  display: flex;
+  flex-wrap: nowrap; /* Force one line */
+  align-items: end;
+  gap: 20px;
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  width: 100%;
+  overflow-x: auto; /* allow scroll on smaller screens */
+}
+
+.search-btn {
+ background: #0d6efd;
+  color: white;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 6px; /* slightly rounded */
+  border: none;
+  white-space: nowrap;
+  padding: 10px 20px;
+}
+
+.search-field {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  width: 230px;
+  min-width: 230px; /* prevent shrink */
+}
+
+.search-field label {
+  font-weight: 600;
+  color: #0d6efd;
+  margin-bottom: 3px;
+  margin-left: 3px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 4px 6px;
+  gap: 6px;
+}
+
+.input-group i {
+  font-size: 16px;
+  color: #888;
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  padding: 5px;
+  
+}
+
+
+/* Responsive Handling */
+@media (max-width: 992px) {
+  .search-bar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .input-group {
+    width: 100%;
+  }
+
+  
+}
+
+/* Gallery Section */
+.gallery-section {
+  background-color: #eff7fa;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.gallery-section img {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  height: 100%;
+}
+
+/* Card Section */
+.card-section {
+  background-color: #000;
+  color: white;
+  padding: 60px 20px;
+}
+
+.card-section .card {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/*Card Sections*/
+.slide-in-right {
+  animation: slideInRight 1s ease forwards;
+}
+.slide-in-left {
+  animation: slideInLeft 1s ease forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+/* Promo Section */
+.promo-section {
+  background: linear-gradient(to right, #99e7b4, #3aaef2);
+  color: white;
+  padding: 60px 20px;
+}
+
+/* Footer */
+.footer {
+  background-color: #00203d;
+  color: white;
+  padding: 60px 20px;
+}
+
+.footer h6 {
+  font-weight: bold;
+}
+
+.footer ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer ul li {
+  margin-bottom: 8px;
+}

@@ -1,0 +1,243 @@
+/* All Services Page Styles */
+.all-services-container {
+  padding: 2rem 0;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.all-services-title {
+  text-align: right;
+  margin-bottom: 2rem;
+  padding-right: 1rem;
+}
+
+.all-services-title h2 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #1c415b;
+  margin: 0;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.service-card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+
+.service-card-content {
+  padding: 1rem;
+}
+
+.service-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.service-rating .star-icon {
+  width: 20px;
+  height: 35px;
+  margin-left: 0.25rem;
+  position: relative;
+  right: -195px;
+  bottom: 3px;
+  filter: brightness(0) saturate(100%) invert(39%) sepia(96%) saturate(1347%) hue-rotate(207deg) brightness(97%) contrast(86%);
+}
+
+.service-rating .rating-text {
+  color: #4285f4;
+  font-weight: normal;
+  font-size: 0.9rem;
+  position: relative;
+  right: -195px;
+  font-size: 15px;
+}
+
+.service-title {
+  text-align: center;
+  font-size: 17px;
+  font-weight: bold;
+  color: #1c415b;
+  margin: 0.5rem 0;
+  position: relative;
+  right: -85px;
+}
+
+.service-address {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  position: relative;
+  right: -40px;
+}
+
+.service-address .location-icon {
+  width: 12px;
+  height: 12px;
+  margin-right: 0.25rem;
+  opacity: 0.7;
+  position: relative;
+  right: -145px;
+}
+
+.service-button {
+  width: 100%;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.service-button:hover {
+  background-color: #3367d6;
+}
+
+/* Section Spacing */
+.services-section {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-title h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1c415b;
+  margin-bottom: 0.5rem;
+}
+
+.section-title p {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .all-services-title h2 {
+    font-size: 1.5rem;
+  }
+
+  .service-card-image {
+    height: 150px;
+  }
+
+  .service-card-content {
+    padding: 0.75rem;
+  }
+
+  .service-title {
+    font-size: 1rem;
+  }
+
+  .service-address {
+    font-size: 0.8rem;
+  }
+
+  .service-address .location-icon {
+    width: 10px;
+    height: 10px;
+  }
+
+  .service-button {
+    padding: 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .service-rating .star-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .all-services-container {
+    padding: 1rem 0;
+  }
+
+  .all-services-title {
+    text-align: center;
+    padding-right: 0;
+  }
+
+  .all-services-title h2 {
+    font-size: 1.3rem;
+  }
+
+  .service-card-image {
+    height: 180px;
+  }
+
+  .service-rating .star-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* RTL Support */
+[dir="rtl"] .service-rating {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .service-rating .star-icon {
+  margin-left: 0;
+  margin-right: 0.25rem;
+}
+
+[dir="rtl"] .service-address .location-icon {
+  margin-right: 0;
+  margin-left: 0.25rem;
+}

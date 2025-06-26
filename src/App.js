@@ -1,69 +1,108 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom"
 
-import Header from './components/global/Header';
-import Footer from './components/global/Footer';
-import Feedback from './components/pages/Home/Feedback';
-import FreeSubscriptionStart from './components/pages/Home/FreeSubscriptionStart';
-import FAQSection from './components/pages/Home/FAQSection';
-import CardsSection from './components/pages/Home/CardsSection';
-import FAQClient from './components/pages/Home/FAQClient';
-import FAQClient2 from './components/pages/Home/FAQClient2';
-import Features from './components/pages/Home/SystemFeatures';
-import Advantages from './components/pages/Home/Advantages';
-import Hero from './components/pages/Home/Hero';
+// Global layout
+// import Header from './components/global/Header';
+import Header1 from "./components/global/Header1"
+import Footer1 from "./components/global/Footer1"
+// import Footer from './components/global/Footer';
+import "./assets/styles/main.css" // path based on location
+// Auth routes
+import Login from "./components/pages/Auth/Login/login"
+import ForgotPassword from "./components/pages/Auth/Login/forgot_password"
+import CodeVerification from "./components/pages/Auth/Login/code_verification"
+import NewPassword from "./components/pages/Auth/Login/new_password"
+import LoginChooseBranch from "./components/pages/Auth/Login/login_choose_branch"
+import Login_1 from "./components/pages/Auth/Login/login_1"
+import Signup from "./components/pages/Auth/Signup"
+// Dashboard & Business routes
+import BusinessProfileHome from "./components/pages/Search_and_make_an_appointment old/Business_Profile_Home"
+import BusinessPayment from "./components/pages/Search_and_make_an_appointment old/business_payment"
+import TeamManagement from "./components/pages/Dashboard/Team/team_management"
+import EmployeeCard from "./components/pages/Dashboard/Employee_card/Employee_card"
 
-import Login from './components/pages/Auth/Login/login';
-import ForgotPassword from './components/pages/Auth/Login/forgot_password';
-import CodeVerification from './components/pages/Auth/Login/code_verification';
-import NewPassword from './components/pages/Auth/Login/new_password';
-import BusinessProfileHome from './components/pages/Search_and_make_an_appointment/Business_Profile_Home';
-import Signup from './components/pages/Auth/Signup';
-import Appointment from './components/pages/Appointment/Appoint';
-import AppointmentSearch from './components/pages/Appointment/AppointSearch';
-import Dashboard from './components/pages/Dashboard/Dashboard';
+//Dashboard
+import Dashboard from "./components/pages/Dashboard/Dashboard"
+import JoinedCustomerReport from "./components/pages/Dashboard/JoinedCustomerReport"
+import CustomerChurnReport from "./components/pages/Dashboard/CustomerChurnReport"
+import RealizationOfRoyalities from "./components/pages/Dashboard/RealizationOfRoyalities"
+import ReportRecipt from "./components/pages/Dashboard/ReportRecipt"
+import QeueuReport from "./components/pages/Dashboard/QeueuReport"
+import SentMessageReport from "./components/pages/Dashboard/SentMessageReport"
+import SystemLog from "./components/pages/Dashboard/SystemLog"
+import RefundReport from "./components/pages/Dashboard/RefundReport"
 
-import './App.css';
+// Home Page
+import Home from "./components/pages/Home/home"
+import Gallery from "./components/pages/Home/Gallery"
+import Hero from "./components/pages/Home/Hero"
+import CardSection from "./components/pages/Home/CardSection"
+import PromoSection from "./components/pages/Home/PromoSection"
+import AllServices from "./components/pages/Home/All_Services/All_Services"
 
-function HomePage() {
-  return (
-    <>
-      <Header />
-      <Hero />
-      <Advantages />
-      <Features />
-      <FAQClient />
-      <FAQClient2 />
-      <CardsSection />
-      <FAQSection />
-      <FreeSubscriptionStart />
-      <Feedback />
-      <Footer />
-    </>
-  );
-}
+import "./App.css"
 
 function App() {
   return (
-    
+    <div className="app">
       <Routes>
-        {/* Ahmer routes */}
+        {/* Auth Routes */}
+        <Route path="/Signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/login_1" element={<Login_1 />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/code-verification" element={<CodeVerification />} />
-        <Route path="/new-password" element={<NewPassword />} />    
-        <Route path="/business-profile-home" element={<BusinessProfileHome />} />
-        
-        <Route path="/" element={<HomePage />} />
-        <Route path="/appointment" element={<Appointment />} />
-        <Route path="/appoint-search" element={<AppointmentSearch />} />
+        <Route path="/new-password" element={<NewPassword />} />
+        <Route path="/login-choose-branch" element={<LoginChooseBranch />} />
+
+        {/* Dashboard Route without header/footer */}
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/signup" element={<Signup />} />
-        
-       
+        <Route path="/joined-customer-report" element={<JoinedCustomerReport />} />
+
+        {/* All other routes with header and footer */}
+        <Route
+          path="/*"
+          element={
+            <>
+              <Header1 />
+              <main>
+                <Routes>
+                  {/* Main Home Page */}
+                  <Route path="/" element={<Home />}>
+                    <Route index element={<Hero />} />
+                    <Route path="gallery" element={<Gallery />} />
+                    <Route path="card-section" element={<CardSection />} />
+                    <Route path="promo" element={<PromoSection />} />
+                  </Route>
+
+                  {/* AllServices Route */}
+                  <Route path="/all-services" element={<AllServices />} />
+
+                  {/* Other Business Routes */}
+                  <Route path="/customer-churn-report" element={<CustomerChurnReport />} />
+                  <Route path="/realization-of-royalities" element={<RealizationOfRoyalities />} />
+                  <Route path="/report-recipt" element={<ReportRecipt />} />
+                  <Route path="/qeueu-report" element={<QeueuReport />} />
+                  <Route path="/sent-message-report" element={<SentMessageReport />} />
+                  <Route path="/system-log" element={<SystemLog />} />
+                  <Route path="/refund-report" element={<RefundReport />} />
+                  <Route path="/business-profile" element={<BusinessProfileHome />} />
+                  <Route path="/business-payment" element={<BusinessPayment />} />
+                  <Route path="/team-management" element={<TeamManagement />} />
+                  <Route path="/employee-card" element={<EmployeeCard />} />
+                </Routes>
+              </main>
+              <Footer1 />
+            </>
+          }
+        />
       </Routes>
-   
-  );
+    </div>
+  )
 }
 
-export default App;
+export default App
+
+
+
+
+

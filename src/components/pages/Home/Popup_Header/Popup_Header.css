@@ -1,0 +1,141 @@
+/* Popup Overlay */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  
+  /* Popup Container */
+  .popup-container {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    z-index: 1000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  /* Popup Content */
+  .popup-content {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    padding: 8px 0;
+    min-width: 280px;
+    max-width: 320px;
+  }
+  
+  /* Menu Items */
+  .menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: right;
+  }
+  
+  .menu-item:hover {
+    background-color: #f8f9fa;
+  }
+  
+  /* Menu Text */
+  .menu-text {
+    font-size: 18px;
+    font-weight: 400;
+    color: #333;
+    text-align: left;
+    direction: rtl;
+    position: relative;
+    right: -175px;
+}
+  
+  /* Menu Icon */
+  .menu-icon {
+    font-size: 20px;
+    color: #4caf50;
+    margin-left: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* Login Item Special Styling */
+  .login-item .menu-text {
+    color: #2196f3;
+    font-weight: 500;
+  }
+  
+  .login-item .menu-icon {
+    color: #2196f3;
+  }
+  
+  /* Menu Divider */
+  .menu-divider {
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 8px 24px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .popup-container {
+      top: 70px;
+      left: 10px;
+      right: 10px;
+    }
+  
+    .popup-content {
+      min-width: auto;
+      max-width: none;
+    }
+  
+    .menu-item {
+      padding: 14px 20px;
+    }
+  
+    .menu-text {
+      font-size: 15px;
+    }
+  
+    .menu-icon {
+      font-size: 18px;
+      ;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .popup-container {
+      top: 65px;
+      left: 5px;
+      right: 5px;
+    }
+  
+    .menu-item {
+      padding: 12px 16px;
+    }
+  
+    .menu-text {
+      font-size: 14px;
+    }
+  }
+  
+  /* RTL Support */
+  [dir="rtl"] .menu-item {
+    text-align: right;
+  }
+  
+  [dir="rtl"] .menu-icon {
+    margin-left: 0;
+    margin-right: 12px;
+  }
+  

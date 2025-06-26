@@ -24,7 +24,7 @@ const CodeVerification = () => {
   return (
     <div className="container-fluid login-container">
       <div className="row rtl">
-        <div className="col-lg-6 d-flex align-items-center justify-content-center">
+        <div className="col-lg-6 login-form-right-side d-flex align-items-center justify-content-center">
           <div className="login-form-height">
             <div className="login-form-header text-end d-flex flex-column gap-4">
               <div className="forgot-password-heading">

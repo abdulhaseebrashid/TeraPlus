@@ -5,6 +5,8 @@ import calendarImage from '../../../assets/img/Registration/main.png';
 import { ReactComponent as EditIcon } from '../../../assets/icons/popsvg.svg';
 import { ReactComponent as TrashIcon } from '../../../assets/icons/popdelet.svg';
 import googleIcon from '../../../assets/icons/google-icon.svg';
+import appleIcon from '../../../assets/icons/apple_icon.svg';
+import downIcon from '../../../assets/icons/down_icon.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaEye, FaEyeSlash,} from 'react-icons/fa';
 
@@ -48,8 +50,50 @@ const TreatmentPopup = ({ isOpen, onClose, onSave, editingTreatment = null }) =>
 
     return (
         <div className="popup-overlay">
-            <div className="popup-content">
-                <h4>{editingTreatment ? 'עריכת טיפול' : 'הוספת טיפול'}</h4>
+            <div className="popup-content" style={{ position: 'relative' }}>
+                {/* Close Button - Top Right */}
+                <button 
+                    onClick={onClose}
+                    style={{
+                        position: 'absolute',
+                        top: '15px',
+                        right: '15px',  
+                        background: 'none',  
+                        border: 'none',
+                        width: '24px',  
+                        height: '24px',  
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        padding: 0,
+                        fontSize: '1.5rem',
+                        lineHeight: 1,
+                        color: '#666',
+                        zIndex: 1
+                    }}
+                    aria-label="סגור"
+                >
+                    ×
+                </button>
+
+                
+                {/* Centered Title */}
+                <div style={{ 
+                    textAlign: 'center',
+                    marginBottom: '1.5rem',
+                    paddingTop: '15px'  
+                }}>
+                    <h4 style={{ 
+                        margin: 0, 
+                        fontSize: '1.25rem', 
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                        width: '100%'
+                    }}>
+                        {editingTreatment ? 'עריכת טיפול' : 'הוספת טיפול'}
+                    </h4>
+                </div>
 
                 <label htmlFor="treatmentName" className="form-label">שם הטיפול</label>
                 <input
@@ -62,20 +106,14 @@ const TreatmentPopup = ({ isOpen, onClose, onSave, editingTreatment = null }) =>
                 />
 
                 <label htmlFor="treatmentDuration" className="form-label">משך הטיפול</label>
-                <select
-                    className="form-select mb-3 custom-select-rtl"
+                <input
+                    type="text"
+                    className="form-control mb-3"
                     value={treatmentDuration}
                     onChange={(e) => setTreatmentDuration(e.target.value)}
-                    dir="rtl"
+                    placeholder="שעה וחצי"
                     required
-                >
-                    <option value="">בחר משך זמן</option>
-                    <option value="30">דקות</option>
-                    <option value="45">דקות</option>
-                    <option value="60">שעה</option>
-                    <option value="90">שעה וחצי</option>
-                    <option value="120">שעתיים</option>
-                </select>
+                />
 
                 <label htmlFor="treatmentPrice" className="form-label">מחיר הטיפול</label>
                 <input
@@ -199,41 +237,60 @@ const ChlorinationPopup = ({ isOpen, onClose, onSave }) => {
     );
 };
 
+// Reusable ProgressBar Component
+const ProgressBar = ({ currentStep }) => {
+    return (
+        <div style={{ 
+            width: '57%',
+            maxWidth: '300px',
+            margin: '0 0 1.5rem 0'
+        }}>
+            <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                gap: '4px',
+                width: '100%'
+            }}>
+                {[1, 2, 3, 4, 5, 6].map((step) => (
+                    <div
+                        key={step}
+                        style={{
+                            flex: 1,
+                            height: '4px',
+                            backgroundColor: step <= currentStep ? '#4A90E2' : '#E0E0E0',
+                            borderRadius: '2px',
+                            transition: 'background-color 0.3s ease'
+                        }}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+};
+
 const Signup = () => {
     const [formData, setFormData] = useState({
         email: '',
         password: '',
         firstName: '',
         lastName: '',
+        email: '',
         gender: '',
         birthDate: '',
         businessName: '',
         businessId: '',
-        businessAddress: '',
-        businessLogo: null,
-        businessCover: null,
-        businessText: '',
-        businessHours: {
-            sunday: { isOpen: false, start: '08:00', end: '16:00' },
-            monday: { isOpen: false, start: '08:00', end: '16:00' },
-            tuesday: { isOpen: false, start: '08:00', end: '16:00' },
-            wednesday: { isOpen: false, start: '08:00', end: '16:00' },
-            thursday: { isOpen: false, start: '08:00', end: '16:00' },
-            friday: { isOpen: false, start: '08:00', end: '16:00' },
-            saturday: { isOpen: false, start: '08:00', end: '16:00' }
-        }
+        businessAddress: ''
     });
 
     const [showPassword, setShowPassword] = useState(false);
-    const [currentStep, setCurrentStep] = useState(0);
+    const [currentStep, setCurrentStep] = useState(1);
     const totalSteps = 6;
     const [treatments, setTreatments] = useState([]); // Regular treatments
     const [chlorinations, setChlorinations] = useState([]); // Chlorination packages
     const [showTreatmentPopup, setShowTreatmentPopup] = useState(false);
     const [showChlorinationPopup, setShowChlorinationPopup] = useState(false);
     const [editingTreatmentIndex, setEditingTreatmentIndex] = useState(null);
-    const [logoPreview, setLogoPreview] = useState(null);
-    const [coverPreview, setCoverPreview] = useState(null);
 
     // Regular treatment handlers
     const handleAddTreatment = (detail) => {
@@ -281,91 +338,29 @@ const Signup = () => {
         }));
     };
 
-    const handleBusinessHoursChange = (day, field, value) => {
-        setFormData(prev => ({
-            ...prev,
-            businessHours: {
-                ...prev.businessHours,
-                [day]: {
-                    ...prev.businessHours[day],
-                    [field]: field === 'isOpen' ? value : value
-                }
-            }
-        }));
-    };
-
-    const handleFileChange = (e, type) => {
-        const file = e.target.files[0];
-        if (file) {
-            setFormData(prev => ({
-                ...prev,
-                [type]: file
-            }));
-
-            // Create preview URL
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                if (type === 'businessLogo') {
-                    setLogoPreview(reader.result);
-                } else {
-                    setCoverPreview(reader.result);
-                }
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-
-    const handleRemoveFile = (type) => {
-        setFormData(prev => ({
-            ...prev,
-            [type]: null
-        }));
-        if (type === 'businessLogo') {
-            setLogoPreview(null);
-        } else {
-            setCoverPreview(null);
-        }
-    };
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (currentStep === 0 && formData.email && formData.password) {
-            setCurrentStep(1);
-        } else if (currentStep === 1 && formData.firstName && formData.lastName && formData.gender && formData.birthDate) {
+        if (formData.phone && currentStep === 1) {
             setCurrentStep(2);
-        } else if (currentStep === 2 && formData.businessName && formData.businessId && formData.businessAddress) {
+        } else if (currentStep === 2 && formData.firstName && formData.lastName && formData.email && formData.gender && formData.birthDate) {
             setCurrentStep(3);
-        } else if (currentStep === 3) {
-            // Check if both treatments and chlorination packages are added
-            if (treatments.length === 0) {
-                alert('אנא הוסף לפחות טיפול אחד לפני שתמשיך');
-                return;
-            }
-            if (chlorinations.length === 0) {
-                alert('אנא הוסף לפחות חבילת הכלרה אחת לפני שתמשיך');
-                return;
-            }
+        } else if (currentStep === 3 && formData.businessName && formData.businessId && formData.businessAddress) {
             setCurrentStep(4);
         } else if (currentStep === 4) {
-            // Check if at least one business day is selected
-            const hasSelectedDay = Object.values(formData.businessHours).some(day => day.isOpen);
-            if (!hasSelectedDay) {
-                alert('אנא בחר לפחות יום עבודה אחד לפני שתמשיך');
-                return;
-            }
-            setCurrentStep(5);
-        } else if (currentStep === 5) {
-            // Handle final submission
             console.log('Form submitted:', { ...formData, treatments, chlorinations });
         }
     };
+    
 
     const handleGoogleSignup = () => {
         console.log('Google signup clicked');
     };
+    const handleAppleSignup = () => {
+        console.log('Apple signup clicked');
+    };
 
     const handlePrevStep = () => {
-        if (currentStep > 0) {
+        if (currentStep > 1) {
             setCurrentStep(currentStep - 1);
         }
     };
@@ -385,7 +380,7 @@ const Signup = () => {
 
         // Step 2: Personal details
         if (currentStep >= 2) {
-            if (formData.firstName && formData.lastName && formData.gender && formData.birthDate) {
+            if (formData.firstName && formData.lastName && formData.email && formData.gender && formData.birthDate) {
                 progress = 2;
             } else {
                 return (1.5 / totalSteps) * 100;
@@ -412,75 +407,62 @@ const Signup = () => {
             }
         }
 
-        // Step 5: Business hours
-        if (currentStep === 5) {
-            // Only count filled business hours
-            const hasFilledBusinessHours = Object.values(formData.businessHours).every(hours => hours.isOpen);
-            if (hasFilledBusinessHours) {
-                progress = 5;
-            } else {
-                return (4.5 / totalSteps) * 100;
-            }
+        // Step 5: Additional details
+        if (currentStep >= 5) {
+            progress = 5;
         }
 
-        // Step 6: Business page setup
+        // Step 6: Final step
         if (currentStep === 6) {
-            // Only count filled business page setup
-            const hasFilledBusinessPageSetup = formData.businessText.trim() !== '' && formData.businessCover !== null;
-            if (hasFilledBusinessPageSetup) {
-                progress = 6;
-            } else {
-                return (5.5 / totalSteps) * 100;
-            }
+            progress = 6;
         }
 
         return (progress / totalSteps) * 100;
     };
 
-    const renderProgressSlider = () => {
-        const safeStep = Math.max(0, Math.min(currentStep, 6));
-        return (
-            <div className="progress-slider-container">
-                <div className="progress-segments-bar">
-                    {[...Array(6)].map((_, index) => (
-                        <div
-                            key={index}
-                            className={`progress-segment-bar${index < safeStep && safeStep > 0 ? ' active' : ''}`}
-                        />
-                    ))}
-                </div>
-            </div>
-        );
-    };
-
     const renderStepOne = () => (
         <>
             <div className="text-end mb-4">
-                <h3 className="hebrew-text">הצטרפו אלינו</h3>
-                <h3 className="hebrew-text">והתחילו לנהל את העסק שלכם בקלות</h3>
+                <h3 className="hebrew-text" style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
+                    הצטרפו אלינו
+                </h3>
+                <p className="hebrew-text" style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+                    והתחילו לנהל את העסק שלכם בקלות
+                </p>
             </div>
-            <div className='google-button mb-4'>
-                <button className="google-signup-button" onClick={handleGoogleSignup}>
-                Sign up with Google
-                    <img src={googleIcon} alt="Google" className="google-icon" />
-                  
-                </button>
+            <div className='google-button mb-3'>
+              <button className="google-signup-button d-flex align-items-center justify-content-center w-70" onClick={handleGoogleSignup}>
+                <span>Sign up with Google</span>
+                <img src={googleIcon} alt="Google" className="ms-2" style={{ width: '20px', height: '20px' }} />
+              </button>
             </div>
+            <div className='apple-button mb-4'>
+              <button 
+                className="apple-signup-button d-flex align-items-center justify-content-center w-70" 
+                onClick={handleAppleSignup}
+                style={{ backgroundColor: '#000000', color: 'white' }}>
+                    <span>Sign up with Apple</span>
+                <img src={appleIcon} alt="Apple" className="me-2" style={{ width: '20px', height: '20px' }} />
+                
+              </button>
+            </div>
+
+            <p style={{ color: '#B3B3B3', textAlign: 'center' }}>או על ידי</p>
 
             <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">אימייל</label>
+                <label htmlFor="phone" className="form-label">מספר פלאפון</label>
                 <input
-                    type="email"
+                    type="text"
                     className="form-control"
-                    id="exampleInputEmail1"
-                    name="email"
-                    value={formData.email}
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="johndoe@email.com"
+                    placeholder="0546679785"
                     required
                 />
-            </div>
-
+                    </div>
+{/* 
             <div className="mb-4" style={{ position: "relative" }}>
                 <label htmlFor="exampleInputPassword1" className="form-label">סיסמה</label>
                 <span
@@ -505,19 +487,24 @@ const Signup = () => {
                     placeholder="**************"
                     required
                 />
-            </div>
-            <button type="submit" className="btn btn-primary continue-button w-100">המשך</button>
+            </div> */}
+            <button type="submit" className="btn btn-primary continue-button w-100">הרשמה</button>
         </>
     );
 
     const renderStepTwo = () => (
         <>
-            <div className="text-end mb-4">
-                <h3 className="hebrew-text screen1-text">על מנת שנתחיל אנא מלאו את</h3>
-                <h3 className="hebrew-text screen1-text">הפרטים הבאים</h3>
+             <div className="text-end mb-4">
+                <h3 className="hebrew-text" style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
+                על מנת שנתחיל אנא מלאו את
+                </h3>
+                <p className="hebrew-text" style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+                הפרטים הבאים
+                </p>
+                <ProgressBar currentStep={1} />
             </div>
-            {renderProgressSlider()}
-            <h3 className="hebrew-text screen1-text">פרטים אישיים </h3>
+            <h3 className="hebrew-text screen1-text" style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>פרטים אישיים</h3>
+            
             <div className="personal-details-form">
                 <div className="mb-3">
                     <label htmlFor="firstName" className="form-label">שם פרטי</label>
@@ -528,6 +515,7 @@ const Signup = () => {
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleInputChange}
+                        placeholder="אהרון"
                         required
                     />
                 </div>
@@ -540,42 +528,66 @@ const Signup = () => {
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleInputChange}
+                        placeholder="כהן"
+                        required
+                    />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="email" className="form-label">דוא״ל</label>
+                    <input
+                        type="email"
+                        className="form-control"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="aheron806@gmail.com"
                         required
                     />
                 </div>
                 <div className='two-opt container-fluid'>
-                    <div className='row two-opt-row'>
-                        <div className="mb-3 col-6">
-                            <label htmlFor="gender" className="form-label">מין</label>
-                            <select
-                                className="form-control"
-                                id="gender"
-                                name="gender"
-                                value={formData.gender}
-                                onChange={handleInputChange}
-                                required
-                            >
-                                <option value="">בחר מין</option>
-                                <option value="male">זכר</option>
-                                <option value="female">נקבה</option>
-                                <option value="other">אחר</option>
-                            </select>
+    <div className='row two-opt-row gx-3'>  
+        <div className="col-md-6 mb-4"> 
+            <label htmlFor="birthDate" className="form-label">תאריך לידה</label>
+            <input
+                type="date"
+                className="form-control"
+                id="birthDate"
+                name="birthDate"
+                value={formData.birthDate}
+                onChange={handleInputChange}
+                required
+            />
+        </div>
+        <div className="col-md-6 mb-4 position-relative custom-select-wrapper"> 
+            <label htmlFor="gender" className="form-label">מין</label>
+            <select
+                className="form-control custom-select-with-icon"
+                id="gender"
+                name="gender"
+                value={formData.gender}
+                onChange={handleInputChange}
+                required
+            >
+                <option value="">בחר מין</option>
+                <option value="male">זכר</option>
+                <option value="female">נקבה</option>
+                <option value="other">אחר</option>
+            </select>
+            <img src={downIcon} alt="dropdown icon" className="custom-select-icon" />
+        </div>
+    </div>
+</div>
+                        <div className="d-flex justify-content-between gap-3 mt-4">
+                        <button type="submit" className="btn btn-primary w-50">המשך</button>
+                        <button 
+    type="button" 
+    className="btn btn-custom-back w-50"
+    onClick={handlePrevStep}
+>
+    חזרה
+</button>
                         </div>
-                        <div className="mb-4 col-6">
-                            <label htmlFor="birthDate" className="form-label">תאריך לידה</label>
-                            <input
-                                type="date"
-                                className="form-control"
-                                id="birthDate"
-                                name="birthDate"
-                                value={formData.birthDate}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </div>
-                    </div>
-                </div>
-                <button type="submit" className="btn btn-primary continue-button w-100">המשך</button>
             </div>
         </>
     );
@@ -583,11 +595,15 @@ const Signup = () => {
     const renderStepThree = () => (
         <>
             <div className="text-end mb-4">
-                <h3 className="hebrew-text screen1-text">על מנת שנתחיל אנא מלאו את</h3>
-                <h3 className="hebrew-text screen1-text">הפרטים הבאים</h3>
+                <h3 className="hebrew-text" style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
+                על מנת שנתחיל אנא מלאו את
+                </h3>
+                <p className="hebrew-text" style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+                הפרטים הבאים
+                </p>
+                <ProgressBar currentStep={2} />
             </div>
-            {renderProgressSlider()}
-            <h3 className="hebrew-text screen1-text">פרטי העסק</h3>
+            <h3 className="hebrew-text screen1-text" style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>פרטים אישיים</h3>
             <div className="business-details-form">
                 <div className="mb-3">
                     <label htmlFor="businessName" className="form-label">שם העסק</label>
@@ -631,6 +647,9 @@ const Signup = () => {
 
                 <div className="button-group container-fluid">
                     <div className='buttons'>
+                    <button type="submit" className="btn btn-primary continue-button col-6 btn12">
+                            המשך
+                        </button>
                         <button
                             type="button"
                             className=" btn-primary continue-button col-6 btn11"
@@ -638,9 +657,7 @@ const Signup = () => {
                         >
                             חזור
                         </button>
-                        <button type="submit" className="btn btn-primary continue-button col-6 btn12">
-                            המשך
-                        </button>
+                        
                     </div>
                 </div>
             </div>
@@ -649,12 +666,16 @@ const Signup = () => {
 
     const renderStepFour = () => (
         <>
-            <div className="text-end mb-4">
-                <h3 className="hebrew-text screen1-text">על מנת שנתחיל אנא מלאו את</h3>
-                <h3 className="hebrew-text screen1-text">הפרטים הבאים</h3>
+           <div className="text-end mb-4">
+                <h3 className="hebrew-text" style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
+                על מנת שנתחיל אנא מלאו את
+                </h3>
+                <p className="hebrew-text" style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+                הפרטים הבאים
+                </p>
+                <ProgressBar currentStep={2} />
             </div>
-            {renderProgressSlider()}
-            <h3 className="hebrew-text screen1-text">טיפולים והכלרות</h3>
+<h3 className="hebrew-text screen1-text" style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>פרטים אישיים</h3>
 
             <div className="details-section mb-4">
                 <div className="detail-category">
@@ -667,8 +688,8 @@ const Signup = () => {
                     <div className="details-list">
                         {treatments.map((detail, index) => (
                             <div key={index} className="detail-item">
-                                <span className="treatment-info treatment-infoname">
-                                    <span className="treatment-name ">{detail.name}</span>
+                                <span className="treatment-info">
+                                    <span className="treatment-name">{detail.name}</span>
                                     <span className="treatment-duration">
                                         {detail.duration === "60" ? "שעה" : 
                                          detail.duration === "30" ? "דקות" : 
@@ -694,12 +715,12 @@ const Signup = () => {
                 </div>
 
                 <div className="detail-category">
-                    <div className="category-header">
+                    {/* <div className="category-header">
                         <h4>הכלרות</h4>
                         <button className="btn btn-link" onClick={() => setShowChlorinationPopup(true)}>
                             הוספה
                         </button>
-                    </div>
+                    </div> */}
                     <div className="details-list">
                         {chlorinations.map((detail, index) => (
                             <div key={index} className="detail-item">
@@ -734,6 +755,10 @@ const Signup = () => {
 
             <div className="button-group container-fluid">
                 <div className='buttons'>
+
+                <button type="submit" className="btn btn-primary continue-button col-6 btn12">
+                        המשך
+                    </button>
                     <button
                         type="button"
                         className="btn-primary continue-button col-6 btn11"
@@ -741,9 +766,7 @@ const Signup = () => {
                     >
                         חזור
                     </button>
-                    <button type="submit" className="btn btn-primary continue-button col-6 btn12">
-                        המשך
-                    </button>
+                    
                 </div>
             </div>
 
@@ -765,172 +788,81 @@ const Signup = () => {
         </>
     );
 
-    const renderBusinessHours = () => (
+    const renderStepFive = () => (
         <>
             <div className="text-end mb-4">
                 <h3 className="hebrew-text screen1-text">על מנת שנתחיל אנא מלאו את</h3>
                 <h3 className="hebrew-text screen1-text">הפרטים הבאים</h3>
+                <ProgressBar currentStep={4} />
             </div>
-            {renderProgressSlider()}
-            <h3 className="hebrew-text screen1-text">שעות הפעילות בעסק</h3>
-            
-            <div className="business-hours-form">
-                {Object.entries(formData.businessHours).map(([day, hours]) => (
-                    <div key={day} className="hours-row">
-                        <div className="day-checkbox">
-                            <input
-                                type="checkbox"
-                                checked={hours.isOpen}
-                                onChange={(e) => handleBusinessHoursChange(day, 'isOpen', e.target.checked)}
-                                id={`checkbox-${day}`}
-                            />
-                        </div>
-                        <div className="day-label">
-                            <label htmlFor={`checkbox-${day}`}>
-                                {day === 'sunday' && 'יום ראשון'}
-                                {day === 'monday' && 'יום שני'}
-                                {day === 'tuesday' && 'יום שלישי'}
-                                {day === 'wednesday' && 'יום רביעי'}
-                                {day === 'thursday' && 'יום חמישי'}
-                                {day === 'friday' && 'יום שישי'}
-                                {day === 'saturday' && 'יום שבת'}
-                            </label>
-                        </div>
-                        <div className="time-inputs">
-                            <input
-                                type="time"
-                                className="custom-time-input"
-                                value={hours.start}
-                                onChange={(e) => handleBusinessHoursChange(day, 'start', e.target.value)}
-                                disabled={!hours.isOpen}
-                            />
-                            <input
-                                type="time"
-                                className="custom-time-input"
-                                value={hours.end}
-                                onChange={(e) => handleBusinessHoursChange(day, 'end', e.target.value)}
-                                disabled={!hours.isOpen}
-                            />
-                        </div>
+            <h3 className="hebrew-text screen1-text">פרטים נוספים</h3>
+            <div className="additional-details-form">
+                <div className="mb-3">
+                    <label htmlFor="additionalInfo" className="form-label">מידע נוסף</label>
+                    <textarea
+                        type="text"
+                        className="form-control"
+                        id="additionalInfo"
+                        name="additionalInfo"
+                        value={formData.additionalInfo}
+                        onChange={handleInputChange}
+                        placeholder="אנא הכנסו מידע נוסף"
+                        required
+                    />
+                </div>
+                <div className="button-group container-fluid">
+                    <div className='buttons'>
+                        <button
+                            type="button"
+                            className="btn-primary continue-button col-6 btn11"
+                            onClick={handlePrevStep}
+                        >
+                            חזור
+                        </button>
+                        <button type="submit" className="btn btn-primary continue-button col-6 btn12">
+                            המשך
+                        </button>
                     </div>
-                ))}
-                
-                <div className='buttons'>
-                    <button
-                        type="button"
-                        className="btn-primary continue-button col-6 btn11"
-                        onClick={handlePrevStep}
-                    >
-                        חזרה
-                    </button>
-                    <button 
-                        type="submit" 
-                        className="btn btn-primary continue-button col-6 btn12"
-                    >
-                        המשך
-                    </button>
                 </div>
             </div>
         </>
     );
 
-    const renderBusinessPageSetup = () => (
+    const renderStepSix = () => (
         <>
             <div className="text-end mb-4">
-                <h3 className="hebrew-text screen1-text">כמעט סיימנו!</h3>
+                <h3 className="hebrew-text screen1-text">על מנת שנתחיל אנא מלאו את</h3>
+                <h3 className="hebrew-text screen1-text">הפרטים הבאים</h3>
+                <ProgressBar currentStep={5} />
             </div>
-            {renderProgressSlider()}
-            <h3 className="hebrew-text screen1-text">עיצוב עמוד העסק שלך</h3>
-            
-            <div className="business-page-form">
-                <div className="mb-4">
-                    
-                    <div className={`upload-box ${logoPreview ? 'has-preview' : ''}`}>
-                        <input
-                            type="file"
-                            className="file-input"
-                            id="businessLogo"
-                            accept="image/*"
-                            onChange={(e) => handleFileChange(e, 'businessLogo')}
-                        />
-                        {logoPreview ? (
-                            <>
-                                <img src={logoPreview} alt="Logo Preview" className="upload-preview" />
-                                <button
-                                    type="button"
-                                    className="upload-remove"
-                                    onClick={() => handleRemoveFile('businessLogo')}
-                                >
-                                    ×
-                                </button>
-                            </>
-                        ) : (
-                            <div className="upload-placeholder">
-                                
-                                <span>לחץ/י להשלמת לוגו העסק</span>
-                            </div>
-                        )}
-                    </div>
-                </div>
-                
-                <div className="mb-4">
-                    
-                    <div className={`upload-box ${coverPreview ? 'has-preview' : ''}`}>
-                        <input
-                            type="file"
-                            className="file-input"
-                            id="businessCover"
-                            accept="image/*"
-                            onChange={(e) => handleFileChange(e, 'businessCover')}
-                        />
-                        {coverPreview ? (
-                            <>
-                                <img src={coverPreview} alt="Cover Preview" className="upload-preview" />
-                                <button
-                                    type="button"
-                                    className="upload-remove"
-                                    onClick={() => handleRemoveFile('businessCover')}
-                                >
-                                    ×
-                                </button>
-                            </>
-                        ) : (
-                            <div className="upload-placeholder">
-                                
-                                <span>לחץ/י להשלמת תמונת ראשית</span>
-                            </div>
-                        )}
-                    </div>
-                </div>
-                
-                <div className="mb-4">
-                    
+            <h3 className="hebrew-text screen1-text">סיום</h3>
+            <div className="final-step-form">
+                <div className="mb-3">
+                    <label htmlFor="finalInfo" className="form-label">מידע סופי</label>
                     <textarea
-                        className="form-control text-area-custom"
-                        rows="3"
-                        placeholder="נתן כיתוב להופיע כאן לדוגמא..."
-                        value={formData.businessText}
-                        onChange={(e) => setFormData(prev => ({
-                            ...prev,
-                            businessText: e.target.value
-                        }))}
-                    ></textarea>
+                        type="text"
+                        className="form-control"
+                        id="finalInfo"
+                        name="finalInfo"
+                        value={formData.finalInfo}
+                        onChange={handleInputChange}
+                        placeholder="אנא הכנסו מידע סופי"
+                        required
+                    />
                 </div>
-
-                <div className='buttons'>
-                    <button
-                        type="button"
-                        className="btn-primary continue-button col-6 btn11"
-                        onClick={handlePrevStep}
-                    >
-                        חזרה
-                    </button>
-                    <button 
-                        type="submit" 
-                        className="btn btn-primary continue-button col-6 btn12"
-                    >
-                        סיימנו!
-                    </button>
+                <div className="button-group container-fluid">
+                    <div className='buttons'>
+                        <button
+                            type="button"
+                            className="btn-primary continue-button col-6 btn11"
+                            onClick={handlePrevStep}
+                        >
+                            חזור
+                        </button>
+                        <button type="submit" className="btn btn-primary continue-button col-6 btn12">
+                            הגש
+                        </button>
+                    </div>
                 </div>
             </div>
         </>
@@ -938,7 +870,7 @@ const Signup = () => {
 
     return (
         <div className='container-fluid signup-container'>
-            <div className='row calendar-sectionrow'>
+            <div className='row'>
                 <div className='col-6 md-6 calendar-section'>
                     <div className="calendar-image-container">
                         <img
@@ -952,15 +884,15 @@ const Signup = () => {
                 <div className='col-6 md-6 form-section'>
                     <div className="form-container">
                         <form className='Signup-form' onSubmit={handleSubmit}>
-                            {currentStep === 0 && renderStepOne()}
-                            {currentStep === 1 && renderStepTwo()}
-                            {currentStep === 2 && renderStepThree()}
-                            {currentStep === 3 && renderStepFour()}
-                            {currentStep === 4 && renderBusinessHours()}
-                            {currentStep === 5 && renderBusinessPageSetup()}
+                            {currentStep === 1 && renderStepOne()}
+                            {currentStep === 2 && renderStepTwo()}
+                            {currentStep === 3 && renderStepThree()}
+                            {currentStep === 4 && renderStepFour()}
+                            {currentStep === 5 && renderStepFive()}
+                            {currentStep === 6 && renderStepSix()}
                         </form>
 
-                        {currentStep === 0 && (
+                        {currentStep === 1 && (
                             <>
                                 <div className="terms-section text-center mt-3">
                                     <p>

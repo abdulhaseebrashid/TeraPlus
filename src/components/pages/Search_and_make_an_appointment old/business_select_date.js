@@ -18,7 +18,7 @@ const BusinessSelectDate = ({ onComplete }) => {
     if (selectedTherapist !== null && selectedTime && date) {
       onComplete(); // Call parent function to move to next section
     }
-  }, [selectedTherapist, selectedTime, date]);
+  }, [selectedTherapist, selectedTime, date, onComplete]);
 
 
     return (
@@ -99,4 +99,3 @@ const BusinessSelectDate = ({ onComplete }) => {
 
 
 export default BusinessSelectDate;
-

@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../../assets/css/style.css';
-import theraplusLogo from '../../../assets/img/System/Sys2.png';
+import theraplusLogo from '../../../assets/img/System/Sys.png';
 import { ReactComponent as Sicn } from '../../../assets/icons/systemicn.svg';
 import background from '../../../assets/img/System/background.png';
 

@@ -8,6 +8,19 @@ import heart from '../../../assets/img/Business_Profile_Home/icons/whishlist.svg
 import star from '../../../assets/img/Business_Profile_Home/icons/star.svg';
 import clockcontcat from '../../../assets/img/Business_Profile_Home/icons/Clockcontact.svg';
 import whatsapp from '../../../assets/img/Business_Profile_Home/icons/whatsapp.svg';
+import upload from '../../../assets/img/Business_Profile_Home/icons/uploadfile.svg';
+import activeStar from '../../../assets/img/Business_Profile_Home/icons/activestar.svg';
+import inactiveStar from '../../../assets/img/Business_Profile_Home/icons/inactivestar.svg';
+
+const ActiveStar = () => (
+  
+  <img src={activeStar} alt="Star" className="active-starstyle"/>
+);
+
+const InactiveStar = () => (
+  
+  <img src={inactiveStar} alt="Star" className="active-starstyle"/>
+);
 
 
 const BusinessContactAndReview  = ({ onComplete }) => {           
@@ -20,6 +33,11 @@ const BusinessContactAndReview  = ({ onComplete }) => {
   const handleClose = () => {
     setshowPopup(false);
   };
+
+
+  const [rating, setRating] = useState(1);
+
+
 
     return (
         <div className="col-lg-4">
@@ -149,20 +167,37 @@ const BusinessContactAndReview  = ({ onComplete }) => {
               </div>
 
               {showPopup && (
-                <div className="business-summary-modal-overlay">
+                <div className="review-business-summary-modal-overlay">
                 <div className="container">
                   <div className="row justify-content-center align-items-center min-vh-100">
                     <div className="col-lg-6">
-                      <div className="business-summary-modal-content">
-                        <button onClick={handleClose} className="position-absolute top-0 end-0 m-3 border-0 bg-transparent">
-                          <i className="bi bi-x-lg close-from-btn"></i>
-                        </button>
+                      <div className="review-business-summary-modal-content">
+                      <button onClick={handleClose} className="position-absolute top-0 end-0 m-3 border-0 bg-transparent">
+                        <i className="bi bi-x-lg close-from-btn"></i>
+                      </button>
                         <h5 className="text-center mt-4 mb-4 business-summary-first-modal-title">הוספת ביקורת</h5>
                         <form className="first-modal-form rtl">
                           <div className="row">
+                            <div className="col-md-12 mb-4 text-center">
+                            <div className="rating-container">
+                              {[1, 2, 3, 4, 5].map((i) => (
+                                <span key={i} onClick={() => setRating(i)}>
+                                  {i <= rating ? <ActiveStar className="active-starstyle"/> : <InactiveStar className="active-starstyle"/>}
+                                </span>
+                              ))}
+                            </div>
+                            <input type="hidden" name="rating" value={rating} />
+                            </div>
                             <div className="col-md-6 mb-2">
                               <label>תאריך הטיפול</label>
-                              <input type="date" className="form-control" name="treatmentDate" placeholder="01/01/2025" />
+                              <div className="position-relative custom-date-wrapper">
+                                <input
+                                  type="date"
+                                  className="form-control rtl-date-input"
+                                  name="treatmentDate"
+                                  placeholder="01/01/2025"
+                                />
+                              </div>
                             </div>
                             <div className="col-md-6 mb-2">
                               <label>שם הלקוח</label>
@@ -180,13 +215,21 @@ const BusinessContactAndReview  = ({ onComplete }) => {
                               <label>הודעה (לא חובה)</label>
                               <textarea className="form-control" name="message" placeholder="מקום טוב ונעים" />
                             </div>
-                            <div className="col-12">
-                              <label>על מנת שנעלה את חוות הדעת שלך יש לצרף חשבונית/ קבלה</label>
-                              <input type="file" className="form-control" name="image" />
+                            <div className="col-12 custom-upload text-center">
+                              <label className="instruction-label">
+                                על מנת שנעלה את חוות הדעת שלך יש לצרף חשבונית/ קבלה
+                              </label>
+
+                              <input type="file" id="fileUpload" className="file-input" name="image" />
+                              <label htmlFor="fileUpload" className="upload-label">
+                               <img src={upload} alt="upload" width="24" height="24" style={{marginInlineEnd: '6px'}}/>
+                                העלה קובץ
+                              </label>
                             </div>
+
                           </div>
                           <div className="text-center mt-4">
-                            <button type="submit" className="first-modal-form-button w-100 border-0">המשך</button>
+                            <button type="submit" className="first-modal-form-button w-100 border-0">שלח ביקורת</button>
                           </div>
                         </form>
                       </div>

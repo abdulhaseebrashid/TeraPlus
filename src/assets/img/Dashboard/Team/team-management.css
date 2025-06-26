@@ -1,0 +1,133 @@
+.team-management-section .search-container {
+    position: relative;
+    width: 300px;
+  }
+ 
+  .team-management-section .search-container img {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  .team-management-section .search-input {
+    border-radius: 10px;
+    border: none !important;
+    padding-right: 40px;
+    padding-left: 10px;
+    text-align: left; 
+  }
+
+  .team-management-section .search-input:focus {
+    box-shadow: none !important;
+  }
+
+  .team-management-section .team-management-left-side {
+    background-color: #f8fbff;
+  }
+
+  .team-management-section .notification-box {
+    padding: 20px;
+  }
+
+  .team-management-section .left-side-header-container {
+    padding: 20px 60px;
+  }
+
+  .team-management-section .team-management-left-side-title h3 {
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 600;
+    color: #032B48;
+    margin-bottom: 0px !important;
+  }
+
+  .team-management-section.team-management-section .team-management-left-header-button {
+    background-color: #fff;
+    color: #032B48;
+    border-radius: 10px;
+    padding: 10px 20px;
+  }
+
+  .team-management-section .team-management-left-header-button-add-user {
+    background-color: #fff;
+    color: #0A1629;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 50px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .team-management-section .team-management-left-header-button-add-user:active {
+    background-color: #032B48;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 50px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .team-management-section .team-management-left-header-button-add-user:hover {
+    background-color: #032B48;
+    color: #fff;
+    border: none;
+  }
+
+  .team-management-section .left-side-button-add-user .button-add-user {
+    background-color: #0066FF;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .team-management-section .team-management-profile-image {
+    border-radius: 50%;
+  }
+
+  .permissions-container-team-management {
+    background-color: #5EBE56;
+    border-radius: 5px;
+    padding: 5px 20px;
+    margin: 5px;
+  }
+
+  .permissions-container-team-management span {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .team-management-team-name span {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .team-management-team-email span {
+    font-size: 16px;
+    font-weight: 400;
+    color: #032B48;
+  }
+
+  .total-records-container,
+    .total-records-container .total-records-number {
+    font-size: 14px;
+    font-weight: 400;
+    color: #BCBCBC;
+  }
+
+  .team-management-left-side-sidebar {
+    padding: 0px !important;
+  }
+
+  .jOUeBR {
+    min-height: 20px !important;
+  }
+  

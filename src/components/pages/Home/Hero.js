@@ -1,55 +1,104 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
-import '../../../assets/css/style.css';
-import MainImage from '../../../assets/img/Hero_images/heroimg1.png';
-import MobileImage from '../../../assets/img/Hero_images/minheroimg1.png';
+import '../../global/header1.css';
+import searchIcon from '../../../assets/img/search.svg';
+import locationIcon from '../../../assets/img/location_icon.svg'; // use your new icon here
 
-
-function HeroImage() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); 
-    };
-
-    handleResize(); 
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+const Hero = () => {
   return (
-    <div className="hero-container">
-      <div className="hero-content">
-        <div className="Image1-section">
-        <img
-      src={isMobile ? MobileImage : MainImage}
-      alt="Responsive Hero"
-    />
-        </div>
-        <div className="text-content">
-          <h1 className="hero-title">
-            הפתרון הדיגיטלי שמתחבר
-            
-            בין לקוחות למרכזי ספא
+    <section className="hero d-flex align-items-center">
+      <div className="hero-overlay w-100">
+        <div className="container text-white">
+          <div className="row justify-content-end">
+            <div className="col-lg-6 text-end">
+              <h1 className="fw-bold display-5 mb-2">
+                <span className="text-dark">תמצאו את הספא</span><br />
+                <span className="text-dark">המתאים עבורכם</span>
+              </h1>
+              <p className="fs-5 text-dark mb-4">
+                חבילות ספא וחווית הזמנה מותאמת אישית
+              </p>
 
-            ומאפשר יעילות  
-          
-          <span className='hero-title-span'>וניהול חכם.</span>
-          </h1>
-          
-          <p className="hero-description">
-            פתרון ניהול מתקדם לכל הרמה העסק. חסוך זמן, שפר את השירות והגדל
-            את הרווחים עם מערכת מתקדמת אישית ומרכזי ספא ומכוני טיפול.
-          </p>
-          <div className='cta-btn'>
-          <button className="cta-button">התחלה ב-3 חודשים בחינם</button>
+              {/* Search Bar Below Text and Right Side */}
+              <div
+                className="search-container d-flex align-items-center p-3 bg-white rounded-4"
+                style={{
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                  maxWidth: '800px',
+                  marginRight: 'auto',
+                  flexWrap: 'wrap',
+                  gap: '10px'
+                }}
+              >
+                {/* Search Button */}
+                <button
+                  className="search-btn btn d-flex align-items-center px-3 py-2"
+                  style={{
+                    backgroundColor: '#2A8DFF',
+                    borderRadius: '8px',
+                    whiteSpace: 'nowrap',
+                    color: 'white',
+                    fontSize: '0.9rem',
+                    height: '40px',
+                    flexShrink: 0
+                  }}
+                >
+                  <i className="bi bi-search me-2"></i> חיפוש
+                </button>
 
+                {/* Search Fields */}
+                <div className="d-flex flex-wrap gap-3" style={{ flex: 1, minWidth: '300px' }}>
+                  {/* Location */}
+                  <div className="search-field" style={{ minWidth: '150px', flex: 1 }}>
+                    <label className="text-primary fw-semibold small d-block text-end">מיקום</label>
+                    <div className="input-group border-bottom">
+                      <img src={searchIcon} alt="Pin Icon" width="14" height="14" className="me-2" />
+                      <input
+                        type="text"
+                        className="form-control border-0 p-0 text-end small"
+                        placeholder="לאן?"
+                        dir="rtl"
+                        style={{ fontSize: '0.85rem' }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Date */}
+                  <div className="search-field" style={{ minWidth: '120px', flex: 1 }}>
+                    <label className="text-primary fw-semibold small d-block text-end">תאריך</label>
+                    <div className="input-group border-bottom">
+                      <img src={searchIcon} alt="Calendar Icon" width="14" height="14" className="me-2" />
+                      <input
+                        type="text"
+                        className="form-control border-0 p-0 text-end small"
+                        placeholder="מתי?"
+                        dir="rtl"
+                        style={{ fontSize: '0.85rem' }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* People */}
+                  <div className="search-field" style={{ minWidth: '120px', flex: 1 }}>
+                    <label className="text-primary fw-semibold small d-block text-end">אנשים</label>
+                    <div className="input-group border-bottom">
+                      <img src={locationIcon} alt="User Icon" width="14" height="14" className="me-2" />
+                      <input
+                        type="text"
+                        className="form-control border-0 p-0 text-end small"
+                        placeholder="כמה?"
+                        dir="rtl"
+                        style={{ fontSize: '0.85rem' }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default HeroImage; 
+export default Hero;

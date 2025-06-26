@@ -1,0 +1,9 @@
+.choose-branch-container .choose-branch-logo .choose-branch-logo-img{
+    width: 150px;
+    height: 148px;
+    border-radius: 20px;
+}
+
+.login-form-button  {
+    padding: 10px 120px !important;
+}
