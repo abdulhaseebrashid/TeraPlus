@@ -13,37 +13,49 @@ const PopupHeader = ({ onClose }) => {
       id: 1,
       text: "המכונים שביקרתי",
       icon: clockIcon,
-      className: "menu-item",
+      className: "menu-item visited-institutes-item",
+      textClass: "visited-institutes-text",
+      iconClass: "visited-institutes-icon",
     },
     {
       id: 2,
       text: "היסטוריית אירועים",
       icon: calendarIcon,
-      className: "menu-item",
+      className: "menu-item events-history-item",
+      textClass: "events-history-text",
+      iconClass: "events-history-icon",
     },
     {
       id: 3,
       text: "אזור אישי",
       icon: userIcon,
-      className: "menu-item",
+      className: "menu-item personal-area-item",
+      textClass: "personal-area-text",
+      iconClass: "personal-area-icon",
     },
     {
       id: 4,
       text: "תמיכה",
       icon: chatIcon,
-      className: "menu-item",
+      className: "menu-item support-item",
+      textClass: "support-text",
+      iconClass: "support-icon",
     },
     {
       id: 5,
       text: "מדיניות שירותים",
       icon: documentIcon,
-      className: "menu-item",
+      className: "menu-item services-policy-item",
+      textClass: "services-policy-text",
+      iconClass: "services-policy-icon",
     },
     {
       id: 6,
       text: "התחברות",
       icon: loginIcon,
       className: "menu-item login-item",
+      textClass: "login-text",
+      iconClass: "login-icon",
     },
   ]
 
@@ -54,12 +66,12 @@ const PopupHeader = ({ onClose }) => {
 
   return (
     <div className="popup-overlay" onClick={onClose}>
-      <div className="popup-content" onClick={(e) => e.stopPropagation()} style={{ background: 'white', padding: '25px', borderRadius: '30px', width: '90%', maxWidth: '400px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', position: 'relative', top: '-205px', right: '580px' }}>
+      <div className="popup-content" onClick={(e) => e.stopPropagation()}>
         {menuItems.map((item, index) => (
           <div key={item.id}>
             <div className={item.className} onClick={() => handleItemClick(item)}>
-              <span className="menu-text">{item.text}</span>
-              <img src={item.icon || "/placeholder.svg"} alt="" className="menu-icon" />
+              <span className={`menu-text ${item.textClass}`}>{item.text}</span>
+              <img src={item.icon || "/placeholder.svg"} alt="" className={`menu-icon ${item.iconClass}`} />
             </div>
             {(index === 2 || index === 4) && <div className="menu-divider"></div>}
           </div>

@@ -38,7 +38,15 @@ const Header1 = () => {
 
           {/* Right Side Logo + Text */}
           <div className="d-flex flex-column align-items-center">
-            <img src={logo || "/placeholder.svg"} alt="Logo" style={{ height: "55px" }} />
+          <img
+            src={logo || "/placeholder.svg"}
+            alt="Logo"
+            style={
+              window.innerWidth <= 768
+                ? { height: "55px", position: "relative", right: "-260px", top: "-47px" }
+                : { height: "55px" }
+            }/>
+
           </div>
         </div>
       </nav>

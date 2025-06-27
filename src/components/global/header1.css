@@ -2,29 +2,28 @@
 
 /* Base Styles */
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   margin: 0;
   padding: 0;
 }
 
-
 .btn-primary:hover {
-    background-color: #0d6efd !important;
-    color: white !important;
-  }
+  background-color: #0d6efd !important;
+  color: white !important;
+}
 
 /* Hero Section */
 .hero {
-    height: 96vh;
-    background: url('../../assets/img/banner.jpg') no-repeat center center;
-    background-size: cover; /* Cover full width and height */
-    background-color: #e6f0f5; /* Fallback color if image doesn't load */
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #5983a1;
-}  
+  height: 96vh;
+  background: url("../../assets/img/banner.jpg") no-repeat center center;
+  background-size: cover; /* Cover full width and height */
+  background-color: #e6f0f5; /* Fallback color if image doesn't load */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5983a1;
+}
 
 /* Darker overlay */
 /* .hero-overlay {
@@ -50,7 +49,7 @@ body {
 }
 
 .search-btn {
- background: #0d6efd;
+  background: #0d6efd;
   color: white;
   font-weight: 600;
   display: flex;
@@ -96,9 +95,7 @@ body {
   background: transparent;
   flex: 1;
   padding: 5px;
-  
 }
-
 
 /* Responsive Handling */
 @media (max-width: 992px) {
@@ -110,22 +107,266 @@ body {
   .input-group {
     width: 100%;
   }
-
-  
 }
 
-/* Gallery Section */
+/* Gallery Section - PRIORITY OVER MAIN.CSS */
 .gallery-section {
-  background-color: #eff7fa;
-  padding: 60px 20px;
-  text-align: center;
+  background-color: #eff7fa !important;
+  padding: 60px 20px !important;
+  text-align: center !important;
+  margin-bottom: 0px !important; /* HEADER1.CSS PRIORITY - You can change this value */
 }
 
-.gallery-section img {
-  width: 100%;
-  border-radius: 20px;
-  object-fit: cover;
-  height: 100%;
+/* Higher specificity to override main.css */
+section.gallery-section {
+  background-color: #eff7fa !important;
+  padding: 60px 20px !important;
+  text-align: center !important;
+  margin-bottom: 0px !important; /* HEADER1.CSS PRIORITY - You can change this value */
+}
+
+/* Even higher specificity */
+section.gallery-section.py-5 {
+  background-color: #eff7fa !important;
+  padding: 60px 20px !important;
+  text-align: center !important;
+  margin-bottom: 0px !important; /* HEADER1.CSS PRIORITY - You can change this value */
+}
+
+.gallery-section .gallery-large-image.img-fluid {
+  width: 100% !important;
+  height: 540px !important;
+  max-width: 100% !important;
+  min-width: 200px !important;
+  border-radius: 35px 0px 0px 35px !important;
+  object-fit: cover !important;
+  transition: transform 0.3s ease !important;
+}
+
+.gallery-section .gallery-small-image-1.img-fluid {
+  width: 100% !important;
+  height: 260px !important;
+  max-width: 100% !important;
+  min-width: 150px !important;
+  border-radius: 0px 0px 0 0 !important;
+  object-fit: cover !important;
+  transition: transform 0.3s ease !important;
+}
+
+.gallery-section .gallery-small-image-2.img-fluid {
+  width: 100% !important;
+  height: 260px !important;
+  max-width: 100% !important;
+  min-width: 150px !important;
+  border-radius: 0 35px 0px 0 !important;
+  object-fit: cover !important;
+  transition: transform 0.3s ease !important;
+}
+
+.gallery-section .gallery-small-image-3.img-fluid {
+  width: 100% !important;
+  height: 260px !important;
+  max-width: 100% !important;
+  min-width: 150px !important;
+  border-radius: 0 0 0px 0px !important;
+  object-fit: cover !important;
+  transition: transform 0.3s ease !important;
+}
+
+.gallery-section .gallery-small-image-4.img-fluid {
+  width: 100% !important;
+  height: 260px !important;
+  max-width: 100% !important;
+  min-width: 150px !important;
+  border-radius: 0px 0px 35px 0px !important;
+  object-fit: cover !important;
+  transition: transform 0.3s ease !important;
+}
+
+/* Hover Effects for Gallery Images with higher specificity */
+.gallery-section .gallery-large-image.img-fluid:hover,
+.gallery-section .gallery-small-image-1.img-fluid:hover,
+.gallery-section .gallery-small-image-2.img-fluid:hover,
+.gallery-section .gallery-small-image-3.img-fluid:hover,
+.gallery-section .gallery-small-image-4.img-fluid:hover {
+  transform: scale(1.02) !important;
+}
+
+/* Responsive Gallery Images with higher specificity and size control */
+@media (max-width: 768px) {
+  /* Gallery Section - PRIORITY OVER MAIN.CSS for tablet */
+  .gallery-section {
+    padding: 40px 20px !important;
+    margin-bottom: 0px !important; /* HEADER1.CSS PRIORITY - You can change this value */
+  }
+
+  section.gallery-section {
+    padding: 40px 20px !important;
+    margin-bottom: 0px !important; /* HEADER1.CSS PRIORITY - You can change this value */
+  }
+
+  section.gallery-section.py-5 {
+    padding: 40px 20px !important;
+    margin-bottom: 0px !important; /* HEADER1.CSS PRIORITY - You can change this value */
+  }
+
+  /* Allow overflow visible for image containers */
+  .gallery-section .container {
+    overflow: visible !important;
+  }
+
+  .gallery-section .row {
+    overflow: visible !important;
+  }
+
+  .gallery-section .col-md-6,
+  .gallery-section .col-6 {
+    overflow: visible !important;
+  }
+
+  /* Image container divs - allow overflow */
+  .gallery-section .col-md-6 > div,
+  .gallery-section .col-6 > div {
+    overflow: visible !important;
+  }
+
+  .gallery-section .gallery-large-image.img-fluid {
+    width: 100% !important; /* Responsive: You can change this */
+    height: 300px !important; /* Responsive: You can change this */
+    max-width: 100% !important;
+    min-width: 250px !important;
+    border-radius: 15px 15px 15px 15px !important;
+    position: relative !important;
+    top: 0px !important; /* You can move this up/down by changing this value */
+    z-index: 10 !important; /* Ensure image stays on top when moved */
+  }
+
+  .gallery-section .gallery-small-image-1.img-fluid {
+    width: 100% !important; /* Responsive: You can change this */
+    height: 200px !important; /* Responsive: You can change this */
+    max-width: 100% !important;
+    min-width: 120px !important;
+    border-radius: 15px 15px 0 0 !important;
+    position: relative !important;
+    top: 0px !important; /* You can move this up/down by changing this value */
+    z-index: 10 !important; /* Ensure image stays on top when moved */
+  }
+
+  .gallery-section .gallery-small-image-2.img-fluid {
+    width: 100% !important; /* Responsive: You can change this */
+    height: 200px !important; /* Responsive: You can change this */
+    max-width: 100% !important;
+    min-width: 120px !important;
+    border-radius: 0 15px 15px 0 !important;
+    position: relative !important;
+    top: 0px !important; /* You can move this up/down by changing this value */
+    z-index: 10 !important; /* Ensure image stays on top when moved */
+  }
+
+  .gallery-section .gallery-small-image-3.img-fluid {
+    width: 100% !important; /* Responsive: You can change this */
+    height: 200px !important; /* Responsive: You can change this */
+    max-width: 100% !important;
+    min-width: 120px !important;
+    border-radius: 0 0 15px 15px !important;
+    position: relative !important;
+    top: 0px !important; /* You can move this up/down by changing this value */
+    z-index: 10 !important; /* Ensure image stays on top when moved */
+  }
+
+  .gallery-section .gallery-small-image-4.img-fluid {
+    width: 100% !important; /* Responsive: You can change this */
+    height: 200px !important; /* Responsive: You can change this */
+    max-width: 100% !important;
+    min-width: 120px !important;
+    border-radius: 15px 0 0 15px !important;
+    position: relative !important;
+    top: 0px !important; /* You can move this up/down by changing this value */
+    z-index: 10 !important; /* Ensure image stays on top when moved */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Gallery Section - PRIORITY OVER MAIN.CSS for mobile */
+  .gallery-section {
+    padding: 20px 20px 10px 20px !important;
+    margin-bottom: 0px !important; /* HEADER1.CSS PRIORITY - You can change this value */
+  }
+
+  section.gallery-section {
+    padding: 20px 20px 10px 20px !important;
+    margin-bottom: 0px !important; /* HEADER1.CSS PRIORITY - You can change this value */
+  }
+
+    section.gallery-section.py-5 {
+        padding: 20px 20px 10px 20px !important;
+        margin-bottom: -440px !important;
+    }
+
+  /* Allow overflow visible for all containers */
+  .gallery-section .container,
+  .gallery-section .row,
+  .gallery-section .col-md-6,
+  .gallery-section .col-6,
+  .gallery-section .col-md-6 > div,
+  .gallery-section .col-6 > div {
+    overflow: visible !important;
+  }
+
+  .gallery-section .gallery-large-image.img-fluid {
+    width: 100% !important;
+    height: 250px !important;
+    max-width: 100% !important;
+    min-width: 200px !important;
+    border-radius: 10px 10px 10px 10px !important;
+    position: relative !important;
+    top: 26px !important; /* You can move this up/down by changing this value */
+    z-index: 10 !important; /* Ensure image stays on top when moved */
+  }
+
+  .gallery-section .gallery-small-image-1.img-fluid {
+    width: 100% !important;
+    height: 150px !important;
+    max-width: 100% !important;
+    min-width: 100px !important;
+    border-radius: 10px 10px 10px 10px !important;
+    position: relative !important;
+    top: -235px !important;
+    z-index: 10 !important;
+  }
+
+  .gallery-section .gallery-small-image-2.img-fluid {
+    width: 100% !important;
+    height: 150px !important;
+    max-width: 100% !important;
+    min-width: 100px !important;
+    border-radius: 10px 10px 10px 10px !important;
+    position: relative !important;
+    top: -236px !important;
+    z-index: 10 !important;
+  }
+
+  .gallery-section .gallery-small-image-3.img-fluid {
+    width: 100% !important;
+    height: 150px !important;
+    max-width: 100% !important;
+    min-width: 100px !important;
+    border-radius: 10px 10px 10px 10px !important;
+    position: relative !important;
+    top: -336px !important;
+    z-index: 10 !important;
+  }
+
+  .gallery-section .gallery-small-image-4.img-fluid {
+    width: 100% !important;
+    height: 150px !important;
+    max-width: 100% !important;
+    min-width: 100px !important;
+    border-radius: 10px 10px 10px 10px !important;
+    position: relative !important;
+    top: -334px !important;
+    z-index: 10 !important;
+  }
 }
 
 /* Card Section */
@@ -170,7 +411,6 @@ body {
   }
 }
 
-
 /* Promo Section */
 /* .promo-section {
     background: url('/assets/img/Rectangle.png') no-repeat center center;
@@ -180,28 +420,27 @@ body {
     margin: 0 auto;
     width: 95%;
   } */
-  
-  /* .promo-container {
+
+/* .promo-container {
     max-width: 1200px;
     margin: 0 auto;
   } */
-  
-  .promo-image {
-    max-height: 300px;
-    margin: 0;
-    align-self: flex-end;
-  }
-  
-  .promo-heading {
-    font-size: 32px;
-    line-height: 1.5;
-  }
-  
-  .promo-paragraph {
-    font-size: 10px;
-    color: #f0f0f0;
-  }
-  
+
+.promo-image {
+  max-height: 300px;
+  margin: 0;
+  align-self: flex-end;
+}
+
+.promo-heading {
+  font-size: 32px;
+  line-height: 1.5;
+}
+
+.promo-paragraph {
+  font-size: 10px;
+  color: #f0f0f0;
+}
 
 /* Footer */
 .footer {

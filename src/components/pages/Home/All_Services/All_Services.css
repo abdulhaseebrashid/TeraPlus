@@ -14,37 +14,39 @@
 .all-services-title h2 {
   font-size: 2.8rem;
   font-weight: bold;
-  color: #1c415b;
+  color: #052d49;
   margin: 0;
+  position: relative;
+  right: 150px;
 }
 
 .services-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
-  padding: 0 1rem;
-  max-width: 1200px;
+  padding: 0px -10rem;
+  max-width: 1560px;
   margin: 0 auto;
 }
 
 .service-card {
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 34px;
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .service-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15); */
 }
 
 .service-card-image {
   width: 100%;
-  height: 200px;
+  height: 265px;
   object-fit: cover;
-  border-radius: 12px 12px 0 0;
+  border-radius: 34px 34px 0 0;
 }
 
 .service-card-content {
@@ -62,7 +64,8 @@
   height: 35px;
   margin-left: 0.25rem;
   position: relative;
-  right: -195px;
+  right: -286px;
+  top: -3px;
   bottom: 3px;
   filter: brightness(0) saturate(100%) invert(39%) sepia(96%) saturate(1347%) hue-rotate(207deg) brightness(97%) contrast(86%);
 }
@@ -72,18 +75,18 @@
   font-weight: normal;
   font-size: 0.9rem;
   position: relative;
-  right: -195px;
-  font-size: 15px;
+  right: -290px;
+  font-size: 16px;
 }
 
 .service-title {
   text-align: center;
-  font-size: 17px;
-  font-weight: bold;
-  color: #1c415b;
+  font-size: 25px;
+  font-weight: bolder;
+  color: black;
   margin: 0.5rem 0;
   position: relative;
-  right: -85px;
+  right: -110px;
 }
 
 .service-address {
@@ -95,7 +98,7 @@
   margin-bottom: 1rem;
   text-align: center;
   position: relative;
-  right: -40px;
+  right: -80px;
 }
 
 .service-address .location-icon {
@@ -109,7 +112,7 @@
 
 .service-button {
   width: 100%;
-  background-color: #4285f4;
+  background-color: rgba(42, 141, 255);
   color: white;
   border: none;
   border-radius: 8px;
@@ -176,11 +179,15 @@
 
   .service-title {
     font-size: 1rem;
-  }
+    position: relative;
+    right: -128px;
+}
 
-  .service-address {
-    font-size: 0.8rem;
-  }
+.service-address {
+  font-size: 0.8rem;
+  position: relative;
+  right: -76px;
+}
 
   .service-address .location-icon {
     width: 10px;
@@ -214,8 +221,11 @@
   }
 
   .all-services-title h2 {
-    font-size: 1.3rem;
-  }
+    font-size: 2.3rem;
+    position: relative;
+    left: 43px;
+    top: 14px;
+}
 
   .service-card-image {
     height: 180px;
@@ -224,7 +234,9 @@
   .service-rating .star-icon {
     width: 18px;
     height: 18px;
-  }
+    position: relative;
+    right: -260px;
+}
 }
 
 /* RTL Support */

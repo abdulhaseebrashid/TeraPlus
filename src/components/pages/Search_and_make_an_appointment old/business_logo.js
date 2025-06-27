@@ -16,7 +16,7 @@ const BusinessLogo = () => {
         <div className="col-lg-10">
           <div className="business-profile-home-second-header-title">
             <h3>ספא 3030 תל אביב</h3>
-            <p>תל אביב</p>
+            <p>דרך השלושה 5, תל אביב</p>
             <Link to="/business-profile-home" className="navigate-to-place-btn">נווט למקום</Link>
           </div>
         </div>

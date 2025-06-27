@@ -20,10 +20,12 @@
     max-width: 571px;
     max-height: 92vh;
     overflow-y: auto;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); */
     position: relative;
     direction: rtl;
-  }
+    position: relative;
+    top: 55px;
+}
   
   .booking-popup1-header {
     position: relative;

@@ -105,10 +105,10 @@ const BusinessContactAndReview  = ({ onComplete }) => {
                 </div>
                 <div className="col-12">
                   <div className="review-section rtl">
-                    <div className="review-section-header d-flex justify-content-between flex-row gap-5">
+                    {/* <div className="review-section-header d-flex justify-content-between flex-row gap-5">
                       <h3 className="pb-4">ביקורות</h3>
                       <button className="review-section-button mb-4" onClick={handleSecondButtonClick}>צפייה בכל</button>
-                    </div>
+                    </div> */}
                     <div className="review-section-content d-flex flex-column gap-2 mb-4">
                       <div className="review-section-header d-flex justify-content-between flex-row gap-5">
                         <div className="review-name">

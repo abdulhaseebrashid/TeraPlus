@@ -1,0 +1,306 @@
+/* User Login Container */
+.user-login-container {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  .user-login-content {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 480px;
+    min-height: 600px;
+    position: relative;
+  }
+  
+  /* Top Navigation Buttons */
+  .login-nav-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 40px;
+    justify-content: flex-start;
+  }
+  
+  .nav-btn {
+    padding: 12px 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  .nav-btn.active,
+  .nav-btn.login-btn {
+    background: #f0f8ff;
+    border-color: #4285f4;
+    color: #4285f4;
+  }
+  
+  .nav-btn:hover {
+    background: #f8f9fa;
+  }
+  
+  .business-btn {
+    color: #666;
+  }
+  
+  /* Login Form Container */
+  .login-form-container {
+    text-align: center;
+  }
+  
+  /* Title Section */
+  .login-title {
+    margin-bottom: 40px;
+  }
+  
+  .login-title h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 12px 0;
+    direction: rtl;
+  }
+  
+  .login-title p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    line-height: 1.5;
+    direction: rtl;
+  }
+  
+  /* Social Login Section */
+  .social-login-section {
+    margin-bottom: 30px;
+  }
+  
+  .social-btn {
+    width: 100%;
+    padding: 14px 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    transition: all 0.2s ease;
+  }
+  
+  .social-btn:hover {
+    background: #f8f9fa;
+    border-color: #d0d0d0;
+  }
+  
+  .google-btn {
+    color: #333;
+  }
+  
+  .apple-btn {
+    background: #000;
+    color: white;
+    border-color: #000;
+  }
+  
+  .apple-btn:hover {
+    background: #333;
+  }
+  
+  .social-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .apple-icon {
+    filter: brightness(0) invert(1);
+  }
+  
+  .apple-btn .apple-icon {
+    filter: none;
+  }
+  
+  /* Divider */
+  .login-divider {
+    margin: 30px 0;
+    position: relative;
+    text-align: center;
+  }
+  
+  .login-divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #e0e0e0;
+  }
+  
+  .login-divider span {
+    background: white;
+    padding: 0 20px;
+    color: #666;
+    font-size: 14px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Phone Input Section */
+  .phone-input-section {
+    margin-bottom: 30px;
+    text-align: right;
+  }
+  
+  .phone-label {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  
+  .phone-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    background: white;
+    transition: border-color 0.2s ease;
+    direction: rtl;
+    text-align: right;
+  }
+  
+  .phone-input:focus {
+    outline: none;
+    border-color: #4285f4;
+    box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.1);
+  }
+  
+  .phone-input::placeholder {
+    color: #999;
+    direction: rtl;
+  }
+  
+  /* Continue Button */
+  .continue-btn {
+    width: 100%;
+    padding: 16px;
+    background: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .continue-btn:hover:not(:disabled) {
+    background: #3367d6;
+  }
+  
+  .continue-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .user-login-container {
+      padding: 10px;
+    }
+  
+    .user-login-content {
+      padding: 30px 20px;
+      border-radius: 15px;
+      min-height: auto;
+    }
+  
+    .login-title h1 {
+      font-size: 24px;
+    }
+  
+    .login-title p {
+      font-size: 13px;
+    }
+  
+    .social-btn {
+      padding: 12px 16px;
+      font-size: 13px;
+    }
+  
+    .phone-input {
+      padding: 12px 14px;
+      font-size: 15px;
+    }
+  
+    .continue-btn {
+      padding: 14px;
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .user-login-content {
+      padding: 25px 15px;
+    }
+  
+    .login-nav-buttons {
+      margin-bottom: 30px;
+    }
+  
+    .nav-btn {
+      padding: 10px 15px;
+      font-size: 13px;
+    }
+  
+    .login-title {
+      margin-bottom: 30px;
+    }
+  
+    .login-title h1 {
+      font-size: 22px;
+    }
+  
+    .social-login-section {
+      margin-bottom: 25px;
+    }
+  
+    .login-divider {
+      margin: 25px 0;
+    }
+  
+    .phone-input-section {
+      margin-bottom: 25px;
+    }
+  }
+  
+  /* RTL Support */
+  [dir="rtl"] .social-btn {
+    flex-direction: row-reverse;
+  }
+  
+  [dir="rtl"] .phone-input {
+    text-align: right;
+  }
+  
+  [dir="rtl"] .phone-label {
+    text-align: right;
+  }
+  

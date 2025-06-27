@@ -15,9 +15,9 @@
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
+  max-width: 1670px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 /* Logo */
@@ -2658,18 +2658,16 @@ text-align: right;
 .terms-section a{
 text-decoration: none;
 }
-.text-center{
-    direction: rtl;
-   
+.text-center {
+  direction: rtl;
+  font-size: 19px;
 }
-.text-center h3{
-    
-font-weight: 700;
-font-size: 18px;
-line-height: 100%;
-letter-spacing: 0%;
-color: #BCBCBC;
-
+.text-center h3 {
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #BCBCBC;
 }
 .text-center a{
     text-decoration: none;
@@ -3926,25 +3924,28 @@ input[type=number] {
     border-bottom-left-radius: 20px;
   }
 
-  .business-profile-home-header-logo img{
+  .business-profile-home-header-logo img {
     width: 110px;
     height: 60px;
-  }
+    position: relative;
+    top: -5px;
+    right: -30px;
+}
 
   .business-profile-home-second-header-title h3{
-    font-size: 30px;
+    font-size: 35px;
     font-weight: 700;
     line-height: 40px;
     color: #032B48;
     margin-bottom: 0px !important;
   }
 
-  .business-profile-home-second-header-title p{
-    font-size: 20px;
+  .business-profile-home-second-header-title p {
+    font-size: 24px;
     font-weight: 400;
     color: #032B48;
     margin-bottom: 0px !important;
-  }
+}
 
   .business-profile-home-second-header-title .navigate-to-place-btn{
     font-size: 18px;

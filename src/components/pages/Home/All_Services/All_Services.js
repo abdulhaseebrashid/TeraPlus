@@ -1,6 +1,7 @@
 "use client"
 
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
+import { useEffect, useState } from "react"
 import Hero from "../Hero"
 import "./All_Services.css"
 import cardImage from "../../../../assets/img/spa_image.svg"
@@ -20,30 +21,56 @@ const Card = ({ image, title, rating, address, onBookNow }) => (
         <img src={locationIcon || "/placeholder.svg"} alt="Location" className="location-icon" />
         {address}
       </p>
-      <button className="service-button" onClick={onBookNow}>הזמן עכשיו</button>
+      <button className="service-button" onClick={onBookNow}>
+        הזמן עכשיו
+      </button>
     </div>
   </div>
 )
 
 const AllServices = () => {
   const navigate = useNavigate()
+  const location = useLocation()
+  const [selectedCategory, setSelectedCategory] = useState("")
+  const [categoryTitle, setCategoryTitle] = useState("")
+
+  // Category mapping
+  const categoryMap = {
+    new: "חדשים אצלנו",
+    "high-rated": "בעלי דירוג גבוה",
+    "group-spa": "ספא לקבוצות",
+  }
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search)
+    const category = urlParams.get("category")
+
+    if (category && categoryMap[category]) {
+      setSelectedCategory(category)
+      setCategoryTitle(categoryMap[category])
+    } else {
+      // Default to first category if no valid category is provided
+      setSelectedCategory("new")
+      setCategoryTitle("חדשים אצלנו")
+    }
+  }, [location.search])
 
   const handleBookNow = () => {
     navigate("/business-profile")
   }
 
-  const generateCards = (count = 12) => {
+  const generateCards = (count = 16) => {
     const cards = []
     for (let i = 0; i < count; i++) {
       cards.push(
-        <Card 
-          key={i} 
-          image={cardImage} 
-          title="ספא 3030" 
-          rating="4.5" 
-          address="המלך שלמה 5, תל אביב" 
+        <Card
+          key={i}
+          image={cardImage}
+          title="ספא 3030"
+          rating="4.5"
+          address="המלך שלמה 5, תל אביב"
           onBookNow={handleBookNow}
-        />
+        />,
       )
     }
     return cards
@@ -57,37 +84,12 @@ const AllServices = () => {
       {/* All Services Content */}
       <div className="all-services-container">
         <div className="container-fluid">
-          {/* Main Section */}
+          {/* Main Section - Show only selected category */}
           <div className="services-section">
             <div className="all-services-title">
-              <h2>חדשים אצלנו</h2>
+              <h2>{categoryTitle}</h2>
             </div>
-            <div className="services-grid">{generateCards(8)}</div>
-          </div>
-
-          {/* Additional Sections */}
-          <div className="services-section">
-            <div className="section-title">
-              <h3>בעלי דירוג גבוה</h3>
-              <p>עשרות מכונים פופלארים אצלנו באתר, נשאר רק להזמין</p>
-            </div>
-            <div className="services-grid">{generateCards(8)}</div>
-          </div>
-
-          <div className="services-section">
-            <div className="section-title">
-              <h3>ספא לקבוצות</h3>
-              <p>ערב צוות? יום גיבוש? בטרהפלוס אפשר להזמין לקבוצות רבות</p>
-            </div>
-            <div className="services-grid">{generateCards(8)}</div>
-          </div>
-
-          <div className="services-section">
-            <div className="section-title">
-              <h3>ספא יוקרה</h3>
-              <p>חווית ספא מפנקת ברמה הגבוהה ביותר</p>
-            </div>
-            <div className="services-grid">{generateCards(8)}</div>
+            <div className="services-grid">{generateCards(16)}</div>
           </div>
         </div>
       </div>
